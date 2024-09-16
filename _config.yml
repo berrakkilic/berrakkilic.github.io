@@ -26,7 +26,7 @@ author:
   pronouns         : "she/her"
   bio              : "Hopefully ERA Tutor"
   location         : "PUM"
-  employer         : #PUM
+  employer         : # PUM
   uri              : # URL
   email            : "berrak.klc@tum.de"
 
