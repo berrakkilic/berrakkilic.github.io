@@ -22,21 +22,21 @@ repository               : "berrakkilic/berrakkilic.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
-  pronouns         : # example: "she/her"
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  name             : "Berrak Kilic"
+  pronouns         : "she/her"
+  bio              : "Hopefully ERA Tutor"
+  location         : "PUM"
+  employer         : "PUM"
   uri              : # URL
-  email            : "none@example.org"
+  email            : "berrak.klc@tum.de"
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : ""
+  googlescholar    : #
   impactstory      : # URL
-  orcid            : ""
+  orcid            : #
   semantic         : # URL
-  pubmed           : ""
+  pubmed           : #
   researchgate     : # URL
 
   # Repositories and software development
@@ -290,7 +290,7 @@ sass:
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: America/Los_Angeles # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Europe/Istanbul # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins
