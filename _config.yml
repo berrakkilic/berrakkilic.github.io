@@ -220,6 +220,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  uebungen:
+    output: true
+    permalink: /:uebungen/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -275,6 +278,13 @@ defaults:
       type: talks
     values:
       layout: talk
+      author_profile: true
+      share: true
+  - scope:
+      path: ""
+      type: uebungen
+    values:
+      layout: single
       author_profile: true
       share: true
 
