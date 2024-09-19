@@ -21,7 +21,7 @@ repository               : "berrakkilic/berrakkilic.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "hellokitty.jpeg"
   name             : "Berrak Kilic"
   pronouns         : "she/her"
   bio              : "ERA Tutor"
@@ -288,7 +288,7 @@ defaults:
       layout: single
       author_profile: true
       share: true
-      comment: true 
+      comment: true
 
 
 # Sass/SCSS
