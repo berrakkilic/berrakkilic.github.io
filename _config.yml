@@ -223,6 +223,9 @@ collections:
   uebungen:
     output: true
     permalink: /:collection/:path/
+  crochet:
+    output: true
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -289,6 +292,18 @@ defaults:
       author_profile: true
       share: true
       comment: true
+
+  #crochet
+  - scope:
+      path: ""
+      type: crochet
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 
 
 # Sass/SCSS
