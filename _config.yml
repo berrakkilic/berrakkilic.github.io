@@ -222,7 +222,7 @@ collections:
     permalink: /:collection/:path/
   uebungen:
     output: true
-    permalink: /:uebungen/:path/
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
