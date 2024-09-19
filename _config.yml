@@ -280,6 +280,7 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+ #_uebungen
   - scope:
       path: ""
       type: uebungen
