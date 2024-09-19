@@ -24,8 +24,8 @@ author:
   avatar           : "profile.png"
   name             : "Berrak Kilic"
   pronouns         : "she/her"
-  bio              : "Hopefully ERA Tutor"
-  location         : "PUM"
+  bio              : "ERA Tutor"
+  location         : # PUM
   employer         : # PUM
   uri              : # URL
   email            : "berrak.klc@tum.de"
