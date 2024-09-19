@@ -4,7 +4,7 @@ collection: uebungen
 #type: "Welcome!"
 permalink: /uebungen/uebungeins
 venue: "University 1, Department"
-date: 2024-16-10
+date: 2024-10-10
 location: "München, Deutschland"
 ---
 
