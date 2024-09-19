@@ -1,7 +1,7 @@
 ---
 title: "Übung 1"
 collection: uebungen
-type: "Welcome!"
+#type: "Welcome!"
 permalink: /uebungen/uebungeins
 venue: "University 1, Department"
 date: 2024-16-10
