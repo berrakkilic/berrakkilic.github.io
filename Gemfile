@@ -10,6 +10,7 @@ group :jekyll_plugins do
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
   gem 'ostruct'
   gem 'tzinfo'
+  gem 'fiddle'
 end
 
 gem 'github-pages'
