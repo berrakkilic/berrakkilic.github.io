@@ -226,6 +226,9 @@ collections:
   crochet:
     output: true
     permalink: /:collection/:path/
+  resources:
+    output: true
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -257,10 +260,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _publications
+  # _resources
   - scope:
       path: ""
-      type: publications
+      type: resources
     values:
       layout: single
       author_profile: true
