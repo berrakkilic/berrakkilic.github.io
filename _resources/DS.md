@@ -6,7 +6,7 @@ category:
 - slides
 - notes
 permalink: /resources/DS
-excerpt: 'Here are some DS resources I or my friends found helpful.'
+excerpt: 'Here are some DS resources my friends and I found helpful.'
 date: 2024-10-01
 venue: #
 slidesurl: #
