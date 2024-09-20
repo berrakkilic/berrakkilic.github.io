@@ -5,7 +5,7 @@ category:
 - sites
 - slides
 - notes
-permalink: /resources/DS
+permalink: /resources/DS/
 excerpt: 'Here are some DS resources my friends and I found helpful.'
 date: 2024-10-01
 venue: #
