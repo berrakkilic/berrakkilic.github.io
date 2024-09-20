@@ -18,4 +18,4 @@ The work of Carlos Camino and other DS tutors are included in these links.
 
 [Carlos Camino](https://carlos-camino.de/ds.html)'s [DS Trainer](https://carlos-camino.de/resources/ds+trainer.pdf) is a helpful summary of the course. Keep in mind that which topics are taught may have changed over the years.
 <br><br>
-Milena, a tutor from WS21/22 graciously shared her [Zusammenfassung](http://berrakkilic.github.io/files/DsMilena.pdf) with us students. I personally based some parts of my cheat sheet on this.
+Milena, a tutor from WS21/22, graciously shared her [Zusammenfassung](http://berrakkilic.github.io/files/DsMilena.pdf) with us. I personally based some parts of my cheat sheet on this.
