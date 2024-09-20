@@ -1,10 +1,8 @@
 ---
 title: "DS Resources"
 collection: resources
-category:
-- sites
-- slides
-- notes
+category: sites
+
 permalink: /resources/DS/
 excerpt: 'Here are some DS resources my friends and I found helpful.'
 date: 2024-10-01
