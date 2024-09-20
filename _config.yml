@@ -82,6 +82,10 @@ resources_category:
     title: 'Conference Papers'
   sites:
     title: 'Sites'
+  slides:
+    title: 'Slides'
+  notes:
+    title: 'notes'
 
 
 # Site Settings
