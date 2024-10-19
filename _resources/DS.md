@@ -19,5 +19,3 @@ The work of DS tutors are included in these links. All the content and associate
 
 
 Milena, a tutor from WS21/22, graciously shared her [Zusammenfassung](http://berrakkilic.github.io/files/DsMilena.pdf) with us. I personally based some parts of my cheat sheet on this.
-
-Vera, a tutor in WS24/25, also has a website with her solutions to the exercise sheets and extra resources! I strongly recommend you check [her website](https://catundercover.github.io/ds-tutorium/index.html) out! 
