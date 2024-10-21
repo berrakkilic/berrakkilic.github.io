@@ -10,4 +10,4 @@ location: "München, Deutschland"
 
 Hi! Thank you for joining my tutorial today :) Here are the slides we used! Hope they're helpful:
 
-[Download the slides here](http://berrakkilic.github.io/files/Tutorium1.pptx)
+[Download the slides here](http://berrakkilic.github.io/files/tutorium1.pptx)
