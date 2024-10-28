@@ -4,7 +4,7 @@ collection: resources
 category: sites
 
 permalink: /resources/EIDI/
-excerpt: 'Here are some DS resources my friends and I found helpful.'
+excerpt: 'Here are some EIDI resources my friends and I found helpful.'
 date: 2024-10-28
 venue: #
 slidesurl: #
