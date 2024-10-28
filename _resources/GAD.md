@@ -13,3 +13,5 @@ citation: #
 ---
 
 [Carlos Camino](https://www.carlos-camino.de/gad.html) has a collection of helpful files - ranging from a trainer to a summary - on this topic.
+
+I used this [GAD TL;DR](http://berrakkilic.github.io/files/gadtldr.pdf) to create my cheat sheet for the exam :)
