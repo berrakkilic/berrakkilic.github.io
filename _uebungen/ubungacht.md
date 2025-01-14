@@ -1,13 +1,13 @@
 ---
-title: "Übung 8"
+title: "Übung 11"
 collection: uebungen
 #type: "Welcome!"
-permalink: /uebungen/uebungacht
+permalink: /uebungen/uebungelf
 venue: "TUM Garching, MI"
-date: 2024-12-11
+date: 2025-01-13
 location: "München, Deutschland"
 ---
 
 Hi! Thank you for joining my tutorial today :) Here are the slides we used! Hope they're helpful:
 
-[Download the slides here](http://berrakkilic.github.io/files/ERA8_1.pdf)
+[Download the slides here](http://berrakkilic.github.io/files/ERA11-1.pdf)
