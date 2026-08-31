@@ -1521,7 +1521,7 @@ function About() {
             I&apos;m a 7th-semester Informatik student at the Technical University of Munich, focusing on UI/UX design and frontend development. My work connects interface design in Figma, implementation in React, and evaluation through structured usability experiments.
           </p>
           <p style={{ fontFamily: "var(--font-sans)", fontSize: "1.0625rem", lineHeight: 1.75, color: C.muted, marginBottom: 24 }}>
-            I&apos;ve worked as a teaching assistant for first year students in computer architecture, which taught me to explain complex ideas clearly. Alongside that, experience in software engineering — embedded C++, debugging, automated testing — has shaped how I approach technical problems and evaluate my own implementations.
+            I&apos;ve worked as a teaching assistant for first year students in computer architecture, which taught me to explain complex ideas clearly. Additionally, my experience in software engineering has shaped how I approach technical problems and evaluate my own implementations.
           </p>
           <p style={{ fontFamily: "var(--font-sans)", fontSize: "1.0625rem", lineHeight: 1.75, color: C.muted }}>
             I find the space between design and engineering the most exciting place to work on: where visual decisions have consequences for user experience. Accessible and intuitive interfaces are the result of careful design, thoughtful implementation, and rigorous evaluation.
@@ -1535,9 +1535,9 @@ function About() {
 // ─── CV ───────────────────────────────────────────────────────────────────────
 function CV() {
   const background = [
-    { label: "Education", entries: ["B.Sc. Informatik (in progress) — Technical University of Munich, 7th semester."] },
+    { label: "Education", entries: ["B.Sc. Informatik (in progress) — Technical University of Munich, 7th semester. \n Thesis: Qualitative Evaluation of Interactive Recommender Systems."] },
     { label: "Software Engineering", entries: ["Embedded C++ development, debugging, and automated testing with GTest and Docker."] },
-    { label: "Teaching", entries: ["Teaching assistant — computer architecture, assembly programming, and online learning resources."] },
+    { label: "Teaching", entries: ["Teaching assistant for computer architecture and assembly programming. Took initiative to create online learning resources."] },
     { label: "Visual Communication", entries: ["Digital and print design for a student organisation's marketing."] },
   ];
 
