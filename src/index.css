@@ -62,6 +62,64 @@ body {
 .project-action--view { color: #643449; margin-left: auto; }
 .project-action--view:hover { color: #A45F75; }
 
+.project-cover-image { display: block; width: 100%; height: 100%; object-fit: contain; }
+.project-cover-image--logo { width: auto; max-width: 100%; padding: 24px; }
+.project-cover-button:focus-visible { outline: 3px solid #A45F75 !important; outline-offset: -3px; }
+
+/* Unity highlights: keep media uncropped and only mount the selected item. */
+.unity-case-study { min-width: 0; }
+.unity-case-study h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  color: #35252D;
+}
+.unity-case-study__eyebrow, .unity-highlight__label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A45F75;
+  margin: 0 0 10px;
+}
+.unity-case-study__intro { font-size: 0.9375rem; line-height: 1.7; color: #8a6e76; margin: 0 0 24px; }
+.unity-screen-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.unity-screen-tabs button, .unity-playback-button {
+  border: 1px solid #DDD2CC;
+  background: transparent;
+  padding: 10px 14px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: #643449;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.unity-screen-tabs button:hover, .unity-playback-button:hover { background: #EEE1DD; }
+.unity-screen-tabs button[aria-selected="true"] { background: #643449; border-color: #643449; color: #fff; }
+.unity-highlight-panel[hidden] { display: none; }
+.unity-case-study :focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
+.unity-highlight { margin: 0; border: 1px solid #DDD2CC; }
+.unity-highlight__media { background: #1d2634; aspect-ratio: 16 / 9; display: flex; align-items: center; }
+.unity-highlight img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.unity-highlight figcaption { padding: 20px 24px 24px; background: #F8F4EF; border-top: 1px solid #DDD2CC; }
+.unity-highlight__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 0 0 14px; }
+.unity-highlight__label { margin: 0; }
+.unity-playback-button { display: inline-flex; align-items: center; gap: 8px; }
+.unity-highlight h4 { font-size: 1rem; line-height: 1.5; font-weight: 600; color: #35252D; margin: 0 0 8px; }
+.unity-highlight p { color: #8a6e76; font-size: 0.875rem; line-height: 1.7; margin: 0 0 12px; }
+.unity-highlight a { color: #643449; font-size: 0.8125rem; font-weight: 500; text-underline-offset: 4px; }
+.unity-highlight a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .unity-highlight figcaption { padding: 18px; }
+  .unity-screen-tabs { gap: 6px; }
+  .unity-screen-tabs button { padding: 10px; }
+}
+
 /* Plant-care case study: original presentation images, kept at their full aspect ratio. */
 .plant-case-study { display: grid; gap: 48px; }
 .plant-case-study section { min-width: 0; }

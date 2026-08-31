@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import TreePortrait from "./TreePortrait";
 import PlantCareShowcase, { plantCareCover } from "./PlantCareShowcase";
+import UnityShowcase, { unityCover } from "./UnityShowcase";
 
 // ─── tokens ──────────────────────────────────────────────────────────────────
 const C = {
@@ -21,7 +22,7 @@ type Project = {
   category: string;
   tools: readonly string[];
   context?: string;
-  cover?: { src: string; alt: string };
+  cover?: { src: string; alt: string; width: number; height: number; variant?: "logo" };
   summary: string;
   contributions: readonly string[];
   detail: {
@@ -44,7 +45,10 @@ const projects: Project[] = [
     tools: ["Figma", "React", "Python"],
     cover: {
       src: plantCareCover,
-      alt: "Plant Care App screens showing My Garden and individual plant-care profiles.",
+      alt: "Leafy app logo: a dark green leaf-shaped figure on a bright green background.",
+      width: 2048,
+      height: 2048,
+      variant: "logo",
     },
     summary:
       "Connecting a personal garden, daily care tasks, plant identification and an encyclopedia in one plant care application.",
@@ -79,12 +83,18 @@ const projects: Project[] = [
   },
   {
     id: "3d-game",
-    title: "3D Game Prototype",
+    title: "The Bard’s Flute",
     category: "Interaction Design · Unity Development",
     tools: ["Unity", "C#", "ProBuilder"],
     context: "University group project",
+    cover: {
+      src: unityCover,
+      alt: "First-person view of the village in The Bard’s Flute, with a pavilion, streets and mountain backdrop.",
+      width: 1149,
+      height: 557,
+    },
     summary:
-      "A Unity group project exploring how movement, selection, manipulation, and navigation shape an interactive experience.",
+      "A Unity adventure prototype exploring movement, interaction and wayfinding through a dance-mat control scheme.",
     contributions: [
       "Created a level blockout in ProBuilder and iterated on it using Unity assets.",
       "Implemented movement, selection, manipulation, and navigation mechanics in C#.",
@@ -92,221 +102,29 @@ const projects: Project[] = [
     ],
     detail: {
       overview:
-        "A university group project in Unity, exploring the core interaction verbs of a 3D environment: how the player moves through space, selects and manipulates objects, and builds a mental model of the level.",
+        "The Bard’s Flute is a Unity prototype created for a university 3D User Interfaces group project. A dance mat serves as the input device for exploring a village, interacting with characters and objects, and navigating towards encounters. The project brings movement, selection, manipulation and wayfinding into one playable environment.",
       process: [
         {
-          phase: "Level Design",
+          phase: "Level design",
           description:
-            "Blocked out the level geometry in ProBuilder, iterating on spatial flow and sight lines before bringing in refined Unity assets.",
+            "Blocked out the level geometry in ProBuilder, iterating on spatial flow and sight lines before bringing in refined Unity assets. Streets, the marketplace and a central pavilion form the setting for exploration and encounters.",
         },
         {
-          phase: "Mechanics",
+          phase: "Input design",
           description:
-            "Implemented movement, selection, manipulation, and navigation mechanics in C# — focusing on responsiveness and predictability from the player's perspective.",
+            "The team mapped movement, looking, jumping, interaction, hints and wayfinding to a dance mat. This control scheme explores how a limited set of physical inputs can support different actions in a 3D environment.",
         },
         {
           phase: "Playtesting",
           description:
-            "Evaluated the prototype against usability criteria: were interactions learnable, consistent, and recoverable? Refined mechanics and layout based on findings.",
+            "Playtesting reviewed gameplay feedback, navigation, input behaviour and the story. The presentation records critiques of health indicators, shooting, breadcrumb movement, beacon range and dance-mat behaviour on Windows, alongside suggestions for the marketplace and NPC conversations.",
         },
       ],
-      screens: [
-        {
-          label: "Level Blockout",
-          description: "ProBuilder geometry establishing spatial layout, pathways, and key interaction zones.",
-          render: () => <GameLevelScreen />,
-        },
-        {
-          label: "Interaction Mechanics",
-          description: "The four core verbs — movement, selection, manipulation, navigation — implemented in C#.",
-          render: () => <GameMechanicsScreen />,
-        },
-        {
-          label: "Playtesting Process",
-          description: "Usability criteria used to evaluate and iterate on the prototype.",
-          render: () => <GamePlaytestScreen />,
-        },
-      ],
+      showcase: () => <UnityShowcase />,
+      screens: [],
     },
   },
 ];
-
-// ─── 3D Game Screens ──────────────────────────────────────────────────────────
-
-function GameLevelScreen() {
-  return (
-    <div style={{
-      width: 320,
-      height: 220,
-      backgroundColor: "#2a2030",
-      borderRadius: 8,
-      border: `1px solid ${C.border}33`,
-      position: "relative",
-      overflow: "hidden",
-      flexShrink: 0,
-    }}>
-      {/* grid floor */}
-      <svg width="320" height="220" viewBox="0 0 320 220" style={{ position: "absolute", inset: 0 }}>
-        <defs>
-          <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#443040" strokeWidth="0.5" />
-          </pattern>
-        </defs>
-        <rect width="320" height="220" fill="url(#grid)" />
-        {/* level walls */}
-        <rect x="30" y="30" width="260" height="160" rx="2" fill="none" stroke="#6b4d5e" strokeWidth="1.5" />
-        {/* rooms */}
-        <rect x="30" y="30" width="110" height="75" fill="#3d2a36" stroke="#6b4d5e" strokeWidth="1" />
-        <rect x="140" y="30" width="150" height="75" fill="#332030" stroke="#6b4d5e" strokeWidth="1" />
-        <rect x="30" y="115" width="260" height="75" fill="#2e1e2b" stroke="#6b4d5e" strokeWidth="1" />
-        {/* doorways */}
-        <rect x="130" y="55" width="20" height="8" fill="#2a2030" />
-        <rect x="85" y="107" width="8" height="16" fill="#2a2030" />
-        <rect x="200" y="107" width="8" height="16" fill="#2a2030" />
-        {/* spawn point */}
-        <circle cx="65" cy="67" r="6" fill="none" stroke={C.rose} strokeWidth="1.5" />
-        <circle cx="65" cy="67" r="2" fill={C.rose} />
-        {/* objects */}
-        <rect x="170" y="48" width="14" height="14" rx="2" fill="#5a3a4d" stroke={C.border + "66"} strokeWidth="0.5" />
-        <rect x="250" y="48" width="10" height="10" rx="2" fill="#5a3a4d" stroke={C.border + "66"} strokeWidth="0.5" />
-        <rect x="80" y="130" width="18" height="12" rx="2" fill="#5a3a4d" stroke={C.border + "66"} strokeWidth="0.5" />
-        <rect x="200" y="140" width="50" height="8" rx="2" fill="#5a3a4d" stroke={C.border + "66"} strokeWidth="0.5" />
-        {/* legend */}
-        <circle cx="18" cy="196" r="4" fill="none" stroke={C.rose} strokeWidth="1.5" />
-        <circle cx="18" cy="196" r="1.5" fill={C.rose} />
-        <text x="26" y="200" fontFamily="monospace" fontSize="7" fill="#9a7a88">Spawn</text>
-        <rect x="80" y="192" width="8" height="8" rx="1" fill="#5a3a4d" stroke={C.border + "66"} strokeWidth="0.5" />
-        <text x="92" y="200" fontFamily="monospace" fontSize="7" fill="#9a7a88">Object</text>
-        <rect x="155" y="192" width="8" height="5" fill="none" stroke="#443040" strokeWidth="0.5" />
-        <text x="167" y="200" fontFamily="monospace" fontSize="7" fill="#9a7a88">Wall</text>
-      </svg>
-      {/* label */}
-      <div style={{
-        position: "absolute",
-        top: 8,
-        left: 10,
-        backgroundColor: "#1a1020cc",
-        padding: "3px 8px",
-        borderRadius: 3,
-      }}>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", color: "#c4a0b4", letterSpacing: "0.1em", textTransform: "uppercase" }}>Level Blockout — Top View</p>
-      </div>
-    </div>
-  );
-}
-
-function GameMechanicsScreen() {
-  const mechanics = [
-    { name: "Movement", icon: "↑↓←→", desc: "WASD / controller, responsive character controller with collision" },
-    { name: "Selection", icon: "◎", desc: "Raycast-based hover highlight, confirm with interact key" },
-    { name: "Manipulation", icon: "⟳", desc: "Grab, rotate, and place objects within range" },
-    { name: "Navigation", icon: "⬡", desc: "Spatial cues, minimap, and landmark-based wayfinding" },
-  ];
-  return (
-    <div style={{
-      width: 320,
-      backgroundColor: "#F8F4EF",
-      border: `1px solid ${C.border}`,
-      borderRadius: 8,
-      overflow: "hidden",
-      flexShrink: 0,
-    }}>
-      <div style={{ padding: "12px 16px 10px", backgroundColor: C.blush, borderBottom: `1px solid ${C.border}` }}>
-        <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.875rem", fontWeight: 600, color: C.ink }}>Interaction Verbs</p>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", color: C.muted, marginTop: 2 }}>C# mechanics implemented in Unity</p>
-      </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        {mechanics.map((m, i) => (
-          <div key={m.name} style={{
-            display: "flex",
-            gap: 12,
-            padding: "12px 16px",
-            borderBottom: i < mechanics.length - 1 ? `1px solid ${C.border}` : "none",
-            alignItems: "flex-start",
-          }}>
-            <div style={{
-              width: 32,
-              height: 32,
-              flexShrink: 0,
-              backgroundColor: C.blush,
-              borderRadius: 6,
-              border: `1px solid ${C.border}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "0.875rem",
-              color: C.plum,
-              fontFamily: "monospace",
-            }}>
-              {m.icon}
-            </div>
-            <div>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", fontWeight: 600, color: C.ink, marginBottom: 2 }}>{m.name}</p>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", color: C.muted, lineHeight: 1.5 }}>{m.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function GamePlaytestScreen() {
-  const criteria = [
-    { criterion: "Learnability", question: "Could a new player discover core interactions without instruction?", result: "Iterated on" },
-    { criterion: "Consistency", question: "Did similar objects behave in predictable ways?", result: "Confirmed" },
-    { criterion: "Recoverability", question: "Could players undo or recover from mistakes?", result: "Improved" },
-    { criterion: "Spatial clarity", question: "Was the player able to navigate without getting lost?", result: "Iterated on" },
-  ];
-  return (
-    <div style={{
-      width: 340,
-      backgroundColor: C.ivory,
-      border: `1px solid ${C.border}`,
-      borderRadius: 8,
-      overflow: "hidden",
-      flexShrink: 0,
-    }}>
-      <div style={{ padding: "12px 16px 10px", backgroundColor: C.blush, borderBottom: `1px solid ${C.border}` }}>
-        <p style={{ fontFamily: "var(--font-serif)", fontSize: "0.875rem", fontWeight: 600, color: C.ink }}>Usability Criteria</p>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", color: C.muted, marginTop: 2 }}>Evaluation framework used in playtesting</p>
-      </div>
-      <div>
-        {criteria.map((c, i) => (
-          <div key={c.criterion} style={{
-            padding: "10px 16px",
-            borderBottom: i < criteria.length - 1 ? `1px solid ${C.border}` : "none",
-            display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: 12,
-            alignItems: "start",
-          }}>
-            <div>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", fontWeight: 600, color: C.ink, marginBottom: 2 }}>{c.criterion}</p>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.625rem", color: C.muted, lineHeight: 1.5 }}>{c.question}</p>
-            </div>
-            <span style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "0.5625rem",
-              fontWeight: 500,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              color: c.result === "Confirmed" ? "#6b8f5e" : C.rose,
-              backgroundColor: c.result === "Confirmed" ? "#e8f0e4" : `${C.blush}`,
-              border: `1px solid ${c.result === "Confirmed" ? "#b8d4af" : C.border}`,
-              padding: "2px 7px",
-              borderRadius: 10,
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}>
-              {c.result}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 // ─── Project Modal ────────────────────────────────────────────────────────────
 
@@ -975,6 +793,7 @@ function ProjectCard({
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         aria-label={`Open ${project.title} detail view`}
+        className="project-cover-button"
         style={{
           all: "unset",
           cursor: "pointer",
@@ -984,7 +803,7 @@ function ProjectCard({
       >
         <div
           style={{
-            backgroundColor: project.cover ? "#fff" : C.blush,
+            backgroundColor: project.cover?.variant === "logo" ? C.ivory : project.cover ? "#1d2634" : C.blush,
             borderBottom: `1px solid ${C.border}`,
             height: 280,
             display: "flex",
@@ -1002,11 +821,11 @@ function ProjectCard({
             <img
               src={project.cover.src}
               alt={project.cover.alt}
-              width="1920"
-              height="1080"
+              width={project.cover.width}
+              height={project.cover.height}
+              className={project.cover.variant === "logo" ? "project-cover-image project-cover-image--logo" : "project-cover-image"}
               loading="lazy"
               decoding="async"
-              style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }}
             />
           ) : <>
           <div style={{
