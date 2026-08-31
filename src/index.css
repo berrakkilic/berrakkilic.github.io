@@ -63,7 +63,7 @@ body {
 .project-action--view:hover { color: #A45F75; }
 
 .project-cover-image { display: block; width: 100%; height: 100%; object-fit: contain; }
-.project-cover-image--logo { width: auto; max-width: 100%; padding: 24px; }
+.project-cover-image--artwork { object-fit: cover; object-position: center; padding: 0; }
 .project-cover-button:focus-visible { outline: 3px solid #A45F75 !important; outline-offset: -3px; }
 
 /* Unity highlights: keep media uncropped and only mount the selected item. */
@@ -170,9 +170,10 @@ body {
 .plant-screen-tabs button[aria-selected="true"] { background: #643449; border-color: #643449; color: #fff; }
 .plant-screen-panel[hidden] { display: none; }
 .plant-screen-panel:focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
-.plant-figma-note { padding: 28px; background: #EEE1DD; border-left: 3px solid #A45F75; }
-.plant-figma-note h3 { font-size: 1.25rem; margin-bottom: 10px; }
-.plant-figma-note p { color: #35252D; font-size: 0.9375rem; line-height: 1.75; margin: 0; }
+.plant-figma-note, .unity-more-note { padding: 28px; background: #EEE1DD; border-left: 3px solid #A45F75; }
+.plant-figma-note h3, .unity-more-note h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.plant-figma-note p, .unity-more-note p { color: #35252D; font-size: 0.9375rem; line-height: 1.75; margin: 0; }
+.unity-more-note { margin-top: 32px; }
 .portfolio-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 @media (max-width: 600px) {
@@ -181,7 +182,7 @@ body {
   .project-process-step { grid-template-columns: 1fr !important; gap: 8px !important; }
   .plant-case-study { gap: 36px; }
   .plant-figure figcaption { padding: 18px; }
-  .plant-figma-note { padding: 22px; }
+  .plant-figma-note, .unity-more-note { padding: 22px; }
   .plant-screen-tabs { gap: 6px; }
   .plant-screen-tabs button { padding: 10px; }
 }

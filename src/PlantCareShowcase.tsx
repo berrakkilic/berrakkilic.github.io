@@ -6,7 +6,7 @@ import identification from "./assets/plant-care/identification.png";
 import identificationFeedback from "./assets/plant-care/identification-feedback.png";
 import encyclopedia from "./assets/plant-care/encyclopedia.png";
 
-export { default as plantCareCover } from "./assets/plant-care/leafy-logo.png";
+export { default as plantCareCover } from "./assets/plant-care/leafy-cover.png";
 
 const screens = [
   {

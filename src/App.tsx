@@ -22,7 +22,7 @@ type Project = {
   category: string;
   tools: readonly string[];
   context?: string;
-  cover?: { src: string; alt: string; width: number; height: number; variant?: "logo" };
+  cover?: { src: string; alt: string; width: number; height: number; variant?: "artwork" };
   summary: string;
   contributions: readonly string[];
   detail: {
@@ -45,10 +45,10 @@ const projects: Project[] = [
     tools: ["Figma", "React", "Python"],
     cover: {
       src: plantCareCover,
-      alt: "Leafy app logo: a dark green leaf-shaped figure on a bright green background.",
-      width: 2048,
-      height: 2048,
-      variant: "logo",
+      alt: "Leafy plant symbol centered on a light green background.",
+      width: 1774,
+      height: 887,
+      variant: "artwork",
     },
     summary:
       "Connecting a personal garden, daily care tasks, plant identification and an encyclopedia in one plant care application.",
@@ -89,9 +89,10 @@ const projects: Project[] = [
     context: "University group project",
     cover: {
       src: unityCover,
-      alt: "First-person view of the village in The Bard’s Flute, with a pavilion, streets and mountain backdrop.",
-      width: 1149,
-      height: 557,
+      alt: "Illustrated cover for The Bard’s Flute: a low-poly golden flute and musical notes on a lavender background.",
+      width: 1774,
+      height: 887,
+      variant: "artwork",
     },
     summary:
       "A Unity adventure prototype exploring movement, interaction and wayfinding through a dance-mat control scheme.",
@@ -803,9 +804,10 @@ function ProjectCard({
       >
         <div
           style={{
-            backgroundColor: project.cover?.variant === "logo" ? C.ivory : project.cover ? "#1d2634" : C.blush,
+            backgroundColor: project.cover?.variant === "artwork" ? C.blush : project.cover ? "#1d2634" : C.blush,
             borderBottom: `1px solid ${C.border}`,
-            height: 280,
+            height: project.cover?.variant === "artwork" ? "auto" : 280,
+            aspectRatio: project.cover?.variant === "artwork" ? "2 / 1" : undefined,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -823,7 +825,7 @@ function ProjectCard({
               alt={project.cover.alt}
               width={project.cover.width}
               height={project.cover.height}
-              className={project.cover.variant === "logo" ? "project-cover-image project-cover-image--logo" : "project-cover-image"}
+              className={project.cover.variant === "artwork" ? "project-cover-image project-cover-image--artwork" : "project-cover-image"}
               loading="lazy"
               decoding="async"
             />

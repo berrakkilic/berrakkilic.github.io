@@ -4,14 +4,12 @@ import characterInteraction from "./assets/unity/potion.gif";
 import wayfinding from "./assets/unity/breadcrumb.gif";
 import combat from "./assets/unity/fight.gif";
 
-export const unityCover = exploration;
+export { default as unityCover } from "./assets/unity/bards-flute-cover.png";
 
 type HighlightId = "exploration" | "character-interaction" | "wayfinding" | "combat";
 
-// The supplied .gif attachments contain single-frame PNG data.
-// Keep these real stills until the original animated files are available.
-// To enable a GIF: import it from ./assets/unity/ and assign that import below.
-// The gallery then shows Play / Stop controls automatically. Nothing autoplays.
+// Optional separate playback sources. The current highlight imports already
+// point to the animated GIFs supplied with this project.
 const animations: Record<HighlightId, string | undefined> = {
   exploration: undefined,
   "character-interaction": undefined,
@@ -177,6 +175,15 @@ export default function UnityShowcase() {
           {activeHighlight === index && <HighlightMedia key={highlight.id} highlight={highlight} />}
         </div>
       ))}
+
+      <aside className="unity-more-note" aria-labelledby="unity-more-heading">
+        <h3 id="unity-more-heading">Want to see more?</h3>
+        <p>
+          These are selected highlights, not a complete overview of the project's
+          functions. Please reach out to me if you'd like to see more of The Bard’s
+          Flute or discuss how it was built.
+        </p>
+      </aside>
     </section>
   );
 }
