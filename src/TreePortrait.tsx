@@ -1,4 +1,5 @@
 import "./TreePortrait.css";
+import portraitUrl from "./assets/cv-soft.png";
 
 const leaves = [
   { label: "Portfolio", href: "#portfolio", position: "portfolio" },
@@ -57,10 +58,10 @@ export default function TreePortrait({ colour }: { colour: string }) {
         </div>
         <figure className="portrait-swing__frame">
           <img
-            src={`${import.meta.env.BASE_URL}cv.jpg`}
+            src={portraitUrl}
             alt="Portrait of Berrak Kilic"
-            width="499"
-            height="500"
+            width="1254"
+            height="1254"
             decoding="async"
             fetchPriority="high"
           />
