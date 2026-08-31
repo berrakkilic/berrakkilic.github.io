@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a UI/UX and frontend developer's portfolio with project highlights, background, and skills to engage recruiters and collaborators.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
