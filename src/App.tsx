@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import TreePortrait from "./TreePortrait";
 
 // ─── tokens ──────────────────────────────────────────────────────────────────
 const C = {
@@ -890,11 +891,25 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showHeaderLinks, setShowHeaderLinks] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      const treeNavigation = document.getElementById("tree-navigation");
+      const leafLinks = treeNavigation?.querySelectorAll("a");
+      const leavesBottom = leafLinks?.length
+        ? Math.max(...Array.from(leafLinks, (link) => link.getBoundingClientRect().bottom))
+        : 0;
+      setShowHeaderLinks(leavesBottom <= 64);
+    };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const links = [
@@ -943,7 +958,7 @@ function Nav() {
           berrak kilic.
         </a>
 
-        <nav aria-label="Main navigation">
+        <nav aria-label="Main navigation" className={`header-navigation${showHeaderLinks ? " header-navigation--visible" : ""}`}>
           <ul
             style={{ display: "flex", gap: 36, listStyle: "none", margin: 0, padding: 0 }}
             className="hidden-mobile"
@@ -1051,6 +1066,7 @@ function hamburgerLine(open: boolean, idx: number): React.CSSProperties {
 function Hero() {
   return (
     <section
+      className="portrait-hero"
       style={{ paddingTop: 120, paddingBottom: 96, paddingLeft: 24, paddingRight: 24 }}
       aria-label="Introduction"
     >
@@ -1152,40 +1168,7 @@ function Hero() {
           </div>
         </div>
 
-        <div
-          aria-hidden="true"
-          style={{
-            height: 440,
-            backgroundColor: C.blush,
-            border: `1px solid ${C.border}`,
-            borderRadius: "48% 48% 50% 50% / 10% 10% 10% 10%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "48px 40px",
-            gap: 8,
-            overflow: "hidden",
-            position: "relative",
-          }}
-        >
-          <div style={{ position: "absolute", left: "18%", top: 0, bottom: 0, width: 1, backgroundColor: C.border, opacity: 0.5 }} />
-          <div style={{ position: "absolute", right: "18%", top: 0, bottom: 0, width: 1, backgroundColor: C.border, opacity: 0.5 }} />
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", letterSpacing: "0.14em", textTransform: "uppercase", color: C.muted, marginBottom: 4 }}>
-            Munich · TUM · 2026
-          </p>
-          <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.2rem, 4vw, 3.25rem)", fontWeight: 600, color: C.ink, letterSpacing: "-0.03em", lineHeight: 1, textAlign: "center" }}>
-            berrak
-          </p>
-          <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.2rem, 4vw, 3.25rem)", fontWeight: 400, fontStyle: "italic", color: C.rose, letterSpacing: "-0.02em", lineHeight: 1, textAlign: "center" }}>
-            kilic.
-          </p>
-          <div style={{ width: 48, height: 1, backgroundColor: C.border, margin: "12px auto" }} />
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.75rem", color: C.muted, textAlign: "center", lineHeight: 1.6, maxWidth: 180, letterSpacing: "0.02em" }}>
-            Informatik · B.Sc.<br />UI/UX · Frontend
-          </p>
-          <div style={{ position: "absolute", bottom: -40, left: "10%", right: "10%", height: 80, borderTop: `1px solid ${C.border}`, borderRadius: "50%", opacity: 0.5 }} />
-        </div>
+        <TreePortrait colour={C.blush} />
       </div>
     </section>
   );
@@ -1471,7 +1454,6 @@ function Portfolio() {
           paddingLeft: 24,
           paddingRight: 24,
           backgroundColor: C.blush,
-          borderTop: `1px solid ${C.border}`,
           borderBottom: `1px solid ${C.border}`,
         }}
         aria-labelledby="portfolio-heading"
@@ -1665,7 +1647,6 @@ const responsiveCSS = `
 
   @media (max-width: 768px) {
     .hero-grid    { grid-template-columns: 1fr !important; }
-    .hero-grid > *:last-child { display: none !important; }
     .project-grid { grid-template-columns: 1fr !important; }
     .about-grid   { grid-template-columns: 1fr !important; gap: 32px !important; }
     .cv-grid      { grid-template-columns: 1fr !important; gap: 48px !important; }
