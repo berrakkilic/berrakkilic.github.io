@@ -919,7 +919,7 @@ function Nav() {
     >
       <div
         style={{
-          maxWidth: 1184,
+          maxWidth: 1232,
           margin: "0 auto",
           padding: "0 24px",
           display: "flex",
@@ -1101,7 +1101,7 @@ function Hero() {
             marginBottom: 40,
             maxWidth: 480,
           }}>
-            I&apos;m Berrak, an Informatik student at TUM. A designer&apos;s eye. A developer&apos;s mind.
+            Hi! I&apos;m Berrak, an Informatik student at TUM. Through my studies and projects, I'm cultivating a designer&apos;s eye & a developer&apos;s mind.
           </p>
 
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
@@ -1172,7 +1172,7 @@ function Hero() {
           <div style={{ position: "absolute", left: "18%", top: 0, bottom: 0, width: 1, backgroundColor: C.border, opacity: 0.5 }} />
           <div style={{ position: "absolute", right: "18%", top: 0, bottom: 0, width: 1, backgroundColor: C.border, opacity: 0.5 }} />
           <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", letterSpacing: "0.14em", textTransform: "uppercase", color: C.muted, marginBottom: 4 }}>
-            Munich · TUM · 2025
+            Munich · TUM · 2026
           </p>
           <p style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.2rem, 4vw, 3.25rem)", fontWeight: 600, color: C.ink, letterSpacing: "-0.03em", lineHeight: 1, textAlign: "center" }}>
             berrak
@@ -1490,7 +1490,7 @@ function Portfolio() {
               }}
             >
               Selected{" "}
-              <em style={{ color: C.rose, fontStyle: "italic" }}>work.</em>
+              <em style={{ color: C.rose, fontStyle: "italic" }}>projects</em>
             </h2>
           </div>
 
@@ -1539,10 +1539,10 @@ function About() {
             I&apos;m a 7th-semester Informatik student at the Technical University of Munich, focusing on UI/UX design and frontend development. My work connects interface design in Figma, implementation in React, and evaluation through structured usability experiments.
           </p>
           <p style={{ fontFamily: "var(--font-sans)", fontSize: "1.0625rem", lineHeight: 1.75, color: C.muted, marginBottom: 24 }}>
-            I&apos;ve worked as a teaching assistant for computer architecture, which taught me to explain complex ideas clearly and think carefully about how people learn. Alongside that, experience in software engineering — embedded C++, debugging, automated testing — has shaped how I approach technical problems and evaluate my own implementations.
+            I&apos;ve worked as a teaching assistant for first year students in computer architecture, which taught me to explain complex ideas clearly. Alongside that, experience in software engineering — embedded C++, debugging, automated testing — has shaped how I approach technical problems and evaluate my own implementations.
           </p>
           <p style={{ fontFamily: "var(--font-sans)", fontSize: "1.0625rem", lineHeight: 1.75, color: C.muted }}>
-            I find the space between design and engineering the most interesting place to work: where visual decisions have consequences and technical choices have a human face.
+            I find the space between design and engineering the most exciting place to work on: where visual decisions have consequences for user experience. Accessible and intuitive interfaces are the result of careful design, thoughtful implementation, and rigorous evaluation.
           </p>
         </div>
       </div>
@@ -1553,14 +1553,14 @@ function About() {
 // ─── CV ───────────────────────────────────────────────────────────────────────
 function CV() {
   const background = [
-    { label: "Education", entries: ["B.Sc. Informatik, in progress — Technical University of Munich, 7th semester."] },
+    { label: "Education", entries: ["B.Sc. Informatik (in progress) — Technical University of Munich, 7th semester."] },
     { label: "Software Engineering", entries: ["Embedded C++ development, debugging, and automated testing with GTest and Docker."] },
     { label: "Teaching", entries: ["Teaching assistant — computer architecture, assembly programming, and online learning resources."] },
-    { label: "Visual Communication", entries: ["Digital and print design for student organisation marketing."] },
+    { label: "Visual Communication", entries: ["Digital and print design for a student organisation's marketing."] },
   ];
 
   const skillGroups = [
-    { label: "Design & Evaluation", items: "Figma, UI/UX design, user research, usability experiments" },
+    { label: "Design & Evaluation", items: "Figma, UI/UX design, agentic development, user research, usability experiments" },
     { label: "Frontend", items: "React, TypeScript, JavaScript, HTML" },
     { label: "Additional Technical", items: "Python, C/C++, Java, SQL, Unity, Git" },
     { label: "Languages", items: "English, German, Turkish" },
