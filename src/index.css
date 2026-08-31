@@ -38,3 +38,92 @@ body {
     animation-duration: 0.01ms !important;
   }
 }
+
+.project-actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  min-height: 44px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.project-action--contributions { color: #8a6e76; }
+.project-action--contributions:hover { color: #35252D; }
+.project-action--view { color: #643449; margin-left: auto; }
+.project-action--view:hover { color: #A45F75; }
+
+/* Plant-care case study: original presentation images, kept at their full aspect ratio. */
+.plant-case-study { display: grid; gap: 48px; }
+.plant-case-study section { min-width: 0; }
+.plant-case-study h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  color: #35252D;
+}
+.plant-case-study__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A45F75;
+  margin: 0 0 10px;
+}
+.plant-case-study__intro {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #8a6e76;
+  margin: 0 0 24px;
+}
+.plant-figure { margin: 0; border: 1px solid #DDD2CC; background: #fff; }
+.plant-figure__image-link { display: block; }
+.plant-figure img { display: block; width: 100%; height: auto; }
+.plant-figure figcaption { padding: 20px 24px 24px; background: #F8F4EF; border-top: 1px solid #DDD2CC; }
+.plant-figure h4 { font-size: 1rem; line-height: 1.5; font-weight: 600; color: #35252D; margin: 0 0 8px; }
+.plant-figure p { color: #8a6e76; font-size: 0.875rem; line-height: 1.7; margin: 0 0 12px; }
+.plant-figure figcaption a { color: #643449; font-size: 0.8125rem; font-weight: 500; text-underline-offset: 4px; }
+.plant-figure figcaption a:hover { text-decoration: underline; }
+.plant-screen-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.plant-screen-tabs button {
+  border: 1px solid #DDD2CC;
+  background: transparent;
+  padding: 10px 14px;
+  min-height: 44px;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: #643449;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.plant-screen-tabs button:hover { background: #EEE1DD; }
+.plant-screen-tabs button[aria-selected="true"] { background: #643449; border-color: #643449; color: #fff; }
+.plant-screen-panel[hidden] { display: none; }
+.plant-screen-panel:focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
+.plant-figma-note { padding: 28px; background: #EEE1DD; border-left: 3px solid #A45F75; }
+.plant-figma-note h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.plant-figma-note p { color: #35252D; font-size: 0.9375rem; line-height: 1.75; margin: 0; }
+.portfolio-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 600px) {
+  .project-detail-header { padding: 20px 24px !important; }
+  .project-detail-body { padding: 28px 24px 48px !important; }
+  .project-process-step { grid-template-columns: 1fr !important; gap: 8px !important; }
+  .plant-case-study { gap: 36px; }
+  .plant-figure figcaption { padding: 18px; }
+  .plant-figma-note { padding: 22px; }
+  .plant-screen-tabs { gap: 6px; }
+  .plant-screen-tabs button { padding: 10px; }
+}

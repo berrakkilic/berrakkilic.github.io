@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import TreePortrait from "./TreePortrait";
+import PlantCareShowcase, { plantCareCover } from "./PlantCareShowcase";
 
 // ─── tokens ──────────────────────────────────────────────────────────────────
 const C = {
@@ -20,10 +21,12 @@ type Project = {
   category: string;
   tools: readonly string[];
   context?: string;
+  cover?: { src: string; alt: string };
   summary: string;
   contributions: readonly string[];
   detail: {
     overview: string;
+    showcase?: () => React.ReactNode;
     process: readonly { phase: string; description: string }[];
     screens: readonly {
       label: string;
@@ -39,8 +42,12 @@ const projects: Project[] = [
     title: "Plant Care App",
     category: "UI/UX Design · Frontend Development",
     tools: ["Figma", "React", "Python"],
+    cover: {
+      src: plantCareCover,
+      alt: "Plant Care App screens showing My Garden and individual plant-care profiles.",
+    },
     summary:
-      "Designing and building a plant care application, then using usability experiments to inform the next iteration.",
+      "Connecting a personal garden, daily care tasks, plant identification and an encyclopedia in one plant care application.",
     contributions: [
       "Designed the application's interface and user experience in Figma.",
       "Built and deployed the application using React.",
@@ -48,17 +55,17 @@ const projects: Project[] = [
     ],
     detail: {
       overview:
-        "A full-cycle project spanning interface design, React development, and evidence-based iteration. The goal was to make plant care routines accessible and legible — surfacing what needs attention without overwhelming the user.",
+        "A project spanning interface design, React development and usability evaluation. The application connects a personal garden with plant profiles, daily care tasks, camera-based identification and an encyclopedia. The aim is to help users move from discovering a plant to understanding and organising its care.",
       process: [
         {
           phase: "Design",
           description:
-            "Explored user needs through research, then designed the interface in Figma — focusing on clear watering status, plant identity, and low-friction task completion.",
+            "Mapped the main areas in an early storyboard, then developed the screens in Figma. The design connects everyday care with discovery, using task icons, colour and clear feedback to make the next action visible.",
         },
         {
           phase: "Development",
           description:
-            "Built and deployed the application in React, translating Figma designs into a working frontend with dynamic plant state and care reminders.",
+            "Built and deployed the application in React, translating the Figma designs into an interactive frontend for plant information and care routines.",
         },
         {
           phase: "Evaluation",
@@ -66,23 +73,8 @@ const projects: Project[] = [
             "Ran structured usability experiments with participants. Collected interaction data and analysed results with Python to identify friction points and inform the next design iteration.",
         },
       ],
-      screens: [
-        {
-          label: "Home — Plant Overview",
-          description: "The main view lists all plants with their watering status at a glance.",
-          render: () => <PlantHomeScreen />,
-        },
-        {
-          label: "Plant Detail",
-          description: "Tapping a plant reveals care history, next watering date, and species notes.",
-          render: () => <PlantDetailScreen />,
-        },
-        {
-          label: "Care Schedule",
-          description: "A weekly view surfaces upcoming tasks without requiring the user to check each plant individually.",
-          render: () => <PlantScheduleScreen />,
-        },
-      ],
+      showcase: () => <PlantCareShowcase />,
+      screens: [],
     },
   },
   {
@@ -138,243 +130,6 @@ const projects: Project[] = [
     },
   },
 ];
-
-// ─── Plant Care Screens ───────────────────────────────────────────────────────
-
-function PhoneFrame({ children, bg = C.ivory }: { children: React.ReactNode; bg?: string }) {
-  return (
-    <div style={{
-      width: 220,
-      height: 420,
-      backgroundColor: C.ink,
-      borderRadius: 32,
-      padding: 10,
-      flexShrink: 0,
-      boxShadow: "0 8px 32px rgba(53,37,45,0.18)",
-    }}>
-      {/* notch */}
-      <div style={{
-        width: 60,
-        height: 10,
-        backgroundColor: C.ink,
-        borderRadius: 10,
-        margin: "0 auto 4px",
-        position: "relative",
-        zIndex: 2,
-      }} />
-      <div style={{
-        flex: 1,
-        height: "calc(100% - 14px)",
-        backgroundColor: bg,
-        borderRadius: 24,
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-      }}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function PlantHomeScreen() {
-  const plants = [
-    { name: "Monstera", status: "Water today", dot: C.rose, days: 0 },
-    { name: "Pothos", status: "In 2 days", dot: "#b8c9a3", days: 2 },
-    { name: "Cactus", status: "In 8 days", dot: "#b8c9a3", days: 8 },
-    { name: "Peace Lily", status: "Overdue", dot: "#c97b60", days: -1 },
-  ];
-  return (
-    <PhoneFrame bg={C.ivory}>
-      {/* app bar */}
-      <div style={{ padding: "14px 16px 10px", borderBottom: `1px solid ${C.border}` }}>
-        <p style={{ fontFamily: "var(--font-serif)", fontSize: "1rem", fontWeight: 600, color: C.ink }}>My Plants</p>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.625rem", color: C.muted, marginTop: 2 }}>4 plants · 1 needs water</p>
-      </div>
-      {/* list */}
-      <div style={{ flex: 1, overflowY: "auto", padding: "8px 0" }}>
-        {plants.map((p) => (
-          <div key={p.name} style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-            padding: "8px 14px",
-            borderBottom: `1px solid ${C.border}44`,
-          }}>
-            {/* leaf icon placeholder */}
-            <div style={{
-              width: 32,
-              height: 32,
-              borderRadius: 8,
-              backgroundColor: C.blush,
-              flexShrink: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M8 14c0 0-5-3-5-7a5 5 0 0110 0c0 4-5 7-5 7z" fill={C.border} />
-                <path d="M8 14V8" stroke={C.muted} strokeWidth="1" strokeLinecap="round" />
-              </svg>
-            </div>
-            <div style={{ flex: 1 }}>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.6875rem", fontWeight: 600, color: C.ink }}>{p.name}</p>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", color: C.muted, marginTop: 1 }}>{p.status}</p>
-            </div>
-            <div style={{ width: 7, height: 7, borderRadius: "50%", backgroundColor: p.dot, flexShrink: 0 }} />
-          </div>
-        ))}
-      </div>
-      {/* bottom nav */}
-      <div style={{
-        display: "flex",
-        borderTop: `1px solid ${C.border}`,
-        padding: "8px 0 4px",
-      }}>
-        {["Plants", "Schedule", "Settings"].map((label, i) => (
-          <div key={label} style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 2,
-          }}>
-            <div style={{ width: 16, height: 16, borderRadius: 4, backgroundColor: i === 0 ? C.plum : C.border }} />
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", color: i === 0 ? C.plum : C.muted }}>{label}</p>
-          </div>
-        ))}
-      </div>
-    </PhoneFrame>
-  );
-}
-
-function PlantDetailScreen() {
-  return (
-    <PhoneFrame bg={C.ivory}>
-      {/* header */}
-      <div style={{
-        backgroundColor: C.blush,
-        padding: "14px 14px 18px",
-        borderBottom: `1px solid ${C.border}`,
-        position: "relative",
-      }}>
-        <div style={{ width: 16, height: 16, borderRadius: 3, backgroundColor: C.border, marginBottom: 8 }} aria-hidden="true" />
-        <p style={{ fontFamily: "var(--font-serif)", fontSize: "1.0625rem", fontWeight: 600, color: C.ink }}>Monstera</p>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", color: C.muted, marginTop: 2 }}>Monstera deliciosa</p>
-        {/* watering badge */}
-        <div style={{
-          position: "absolute",
-          right: 12,
-          bottom: 14,
-          backgroundColor: C.rose,
-          borderRadius: 12,
-          padding: "3px 9px",
-        }}>
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", fontWeight: 600, color: "#fff", letterSpacing: "0.06em" }}>WATER TODAY</p>
-        </div>
-      </div>
-      {/* details */}
-      <div style={{ flex: 1, padding: "12px 14px", display: "flex", flexDirection: "column", gap: 10 }}>
-        {[
-          { label: "Last watered", value: "3 days ago" },
-          { label: "Frequency", value: "Every 3 days" },
-          { label: "Light", value: "Indirect, bright" },
-          { label: "Location", value: "Living room" },
-        ].map((row) => (
-          <div key={row.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: 8, borderBottom: `1px solid ${C.border}44` }}>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", color: C.muted }}>{row.label}</p>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", fontWeight: 600, color: C.ink }}>{row.value}</p>
-          </div>
-        ))}
-        <div style={{
-          marginTop: 4,
-          backgroundColor: C.blush,
-          borderRadius: 8,
-          padding: "8px 10px",
-        }}>
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", fontWeight: 600, color: C.rose, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>Care History</p>
-          {["Mon", "Wed", "Sat"].map((d) => (
-            <div key={d} style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 3 }}>
-              <div style={{ width: 5, height: 5, borderRadius: "50%", backgroundColor: C.rose }} />
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", color: C.muted }}>Watered — {d}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* CTA */}
-      <div style={{ padding: "8px 14px 12px" }}>
-        <div style={{ backgroundColor: C.plum, borderRadius: 8, padding: "7px", textAlign: "center" }}>
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", fontWeight: 600, color: "#fff", letterSpacing: "0.06em" }}>Mark as watered</p>
-        </div>
-      </div>
-    </PhoneFrame>
-  );
-}
-
-function PlantScheduleScreen() {
-  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  const tasks: Record<string, string[]> = {
-    Mon: ["Monstera", "Pothos"],
-    Thu: ["Peace Lily"],
-    Sat: ["Pothos", "Cactus"],
-  };
-  return (
-    <PhoneFrame bg={C.ivory}>
-      <div style={{ padding: "14px 14px 10px", borderBottom: `1px solid ${C.border}` }}>
-        <p style={{ fontFamily: "var(--font-serif)", fontSize: "1rem", fontWeight: 600, color: C.ink }}>This Week</p>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", color: C.muted, marginTop: 2 }}>5 care tasks scheduled</p>
-      </div>
-      {/* day columns */}
-      <div style={{ display: "flex", padding: "10px 10px 4px", gap: 4 }}>
-        {days.map((d) => (
-          <div key={d} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.4375rem", color: C.muted, fontWeight: 500 }}>{d}</p>
-            <div style={{
-              width: "100%",
-              minHeight: 24,
-              backgroundColor: tasks[d] ? `${C.blush}` : "transparent",
-              borderRadius: 4,
-              border: tasks[d] ? `1px solid ${C.border}` : "none",
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-              padding: tasks[d] ? "3px 2px" : 0,
-            }}>
-              {(tasks[d] || []).map((t) => (
-                <div key={t} style={{ backgroundColor: C.rose, borderRadius: 2, padding: "1px 2px" }}>
-                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.3125rem", color: "#fff", fontWeight: 600, lineHeight: 1.4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{t}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      {/* upcoming list */}
-      <div style={{ flex: 1, padding: "8px 12px" }}>
-        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: C.muted, marginBottom: 8 }}>Upcoming</p>
-        {[
-          { plant: "Monstera", day: "Today", urgent: true },
-          { plant: "Pothos", day: "Tuesday", urgent: false },
-          { plant: "Peace Lily", day: "Thursday", urgent: false },
-        ].map((item) => (
-          <div key={item.plant} style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "6px 0",
-            borderBottom: `1px solid ${C.border}44`,
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <div style={{ width: 5, height: 5, borderRadius: "50%", backgroundColor: item.urgent ? C.rose : C.border }} />
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5625rem", color: C.ink, fontWeight: item.urgent ? 600 : 400 }}>{item.plant}</p>
-            </div>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.5rem", color: item.urgent ? C.rose : C.muted }}>{item.day}</p>
-          </div>
-        ))}
-      </div>
-    </PhoneFrame>
-  );
-}
 
 // ─── 3D Game Screens ──────────────────────────────────────────────────────────
 
@@ -567,7 +322,25 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !modalRef.current) return;
+      const panel = modalRef.current;
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )).filter((element) => element.tabIndex >= 0 && element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (e.shiftKey && (document.activeElement === first || !panel.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !panel.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
     },
     [onClose]
   );
@@ -577,13 +350,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     return () => document.removeEventListener("keydown", handleKey);
   }, [handleKey]);
 
-  // focus trap
+  // Focus the close button on opening; return to the opener on closing.
   useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
     const el = modalRef.current;
     if (el) {
       const first = el.querySelector<HTMLElement>("button, [href], input, [tabindex]");
       first?.focus();
     }
+    return () => { if (opener?.isConnected) opener.focus(); };
   }, []);
 
   return (
@@ -628,7 +403,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         }}
       >
         {/* header */}
-        <div style={{
+        <div className="project-detail-header" style={{
           position: "sticky",
           top: 0,
           zIndex: 10,
@@ -689,7 +464,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
 
         {/* body */}
-        <div style={{ padding: "40px 40px 64px" }}>
+        <div className="project-detail-body" style={{ padding: "40px 40px 64px" }}>
           {/* tools */}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
             {project.tools.map((t) => (
@@ -751,7 +526,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
               {project.detail.process.map((step, i) => (
-                <div key={step.phase} style={{
+                <div key={step.phase} className="project-process-step" style={{
                   display: "grid",
                   gridTemplateColumns: "120px 1fr",
                   gap: 24,
@@ -793,7 +568,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
 
           {/* screens */}
-          <div>
+          {project.detail.showcase ? project.detail.showcase() : <div>
             <h3 style={{
               fontFamily: "var(--font-sans)",
               fontSize: "0.75rem",
@@ -880,7 +655,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 </div>
               </div>
             ))}
-          </div>
+          </div>}
         </div>
       </div>
     </div>
@@ -1209,20 +984,31 @@ function ProjectCard({
       >
         <div
           style={{
-            backgroundColor: C.blush,
+            backgroundColor: project.cover ? "#fff" : C.blush,
             borderBottom: `1px solid ${C.border}`,
             height: 280,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "32px 40px",
+            padding: project.cover ? 0 : "32px 40px",
             gap: 12,
             position: "relative",
             overflow: "hidden",
             transition: "background-color 0.2s",
           }}
         >
+          {project.cover ? (
+            <img
+              src={project.cover.src}
+              alt={project.cover.alt}
+              width="1920"
+              height="1080"
+              loading="lazy"
+              decoding="async"
+              style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }}
+            />
+          ) : <>
           <div style={{
             position: "absolute",
             inset: 0,
@@ -1272,6 +1058,7 @@ function ProjectCard({
               {project.context}
             </p>
           )}
+          </>}
 
           {/* view detail hint */}
           <div style={{
@@ -1354,58 +1141,15 @@ function ProjectCard({
           {project.summary}
         </p>
 
-        <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+        <div className="project-actions">
           <button
-            onClick={onOpen}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 0,
-              fontFamily: "var(--font-sans)",
-              fontSize: "0.8125rem",
-              fontWeight: 500,
-              color: C.plum,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              transition: "color 0.2s",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.color = C.rose)}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.color = C.plum)}
-          >
-            <span>View project</span>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-
-          <button
-            onClick={() => setExpanded(!expanded)}
+            type="button"
+            className="project-action project-action--contributions"
+            onClick={() => setExpanded((previous) => !previous)}
             aria-expanded={expanded}
             aria-controls={`contributions-${project.id}`}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 0,
-              fontFamily: "var(--font-sans)",
-              fontSize: "0.8125rem",
-              fontWeight: 500,
-              color: C.muted,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              transition: "color 0.2s",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.color = C.ink)}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.color = C.muted)}
           >
-            <span>{expanded ? "Hide" : "Contribution"}</span>
+            <span>Contributions</span>
             <svg
               width="10"
               height="10"
@@ -1417,10 +1161,22 @@ function ProjectCard({
               <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
+
+          <button
+            type="button"
+            className="project-action project-action--view"
+            onClick={onOpen}
+          >
+            <span>View project</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
 
         <div
           id={`contributions-${project.id}`}
+          aria-hidden={!expanded}
           style={{
             overflow: "hidden",
             maxHeight: expanded ? 300 : 0,
