@@ -1088,7 +1088,7 @@ function Hero() {
             letterSpacing: "-0.02em",
           }}>
             I bring design and code together to make digital experiences{" "}
-            <em style={{ color: C.rose, fontStyle: "italic" }}>clear, intuitive</em>{" "}
+            <em style={{ color: C.rose, fontStyle: "italic" }}>intuitive</em>{" "}
             and{" "}
             <em style={{ color: C.rose, fontStyle: "italic" }}>joyful.</em>
           </h1>
