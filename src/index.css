@@ -59,8 +59,25 @@ body {
 }
 .project-action--contributions { color: #8a6e76; }
 .project-action--contributions:hover { color: #35252D; }
-.project-action--view { color: #643449; margin-left: auto; }
+.project-action-links { display: flex; align-items: center; gap: 16px; margin-left: auto; flex-wrap: wrap; }
+.project-action--github { color: #8a6e76; text-decoration: none; }
+.project-action--github:hover { color: #35252D; }
+.project-action--view { color: #643449; }
 .project-action--view:hover { color: #A45F75; }
+.project-repository-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 32px;
+  color: #643449;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+.project-repository-link:hover { color: #A45F75; text-decoration: underline; }
+.project-repository-link:focus-visible,
+.project-action--github:focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
 
 .project-cover-image { display: block; width: 100%; height: 100%; object-fit: contain; }
 .project-cover-image--artwork { object-fit: cover; object-position: center; padding: 0; }
@@ -176,13 +193,105 @@ body {
 .unity-more-note { margin-top: 32px; }
 .portfolio-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
+/* Humblewood case study: a compact product overview until interface imagery is added. */
+.humblewood-case-study { min-width: 0; }
+.humblewood-case-study > h3,
+.humblewood-more-note h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  color: #35252D;
+}
+.humblewood-case-study__eyebrow,
+.humblewood-feature-card__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A45F75;
+  margin: 0 0 10px;
+}
+.humblewood-case-study__intro {
+  max-width: 640px;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #8a6e76;
+  margin: 0 0 28px;
+}
+.humblewood-feature-grid { display: grid; gap: 16px; }
+.humblewood-feature-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #DDD2CC;
+  background: #F8F4EF;
+  padding: 26px 28px 28px;
+}
+.humblewood-feature-card__number {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: #EEE1DD;
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.humblewood-feature-card__eyebrow { position: relative; padding-right: 58px; }
+.humblewood-feature-card h4 {
+  position: relative;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #35252D;
+  margin: 0 0 10px;
+}
+.humblewood-feature-card > p:not(.humblewood-feature-card__eyebrow) {
+  position: relative;
+  color: #8a6e76;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+.humblewood-feature-card ul {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.humblewood-feature-card li {
+  border: 1px solid #DDD2CC;
+  background: #EEE1DD;
+  color: #643449;
+  padding: 5px 9px;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+.humblewood-more-note {
+  margin-top: 32px;
+  padding: 28px;
+  background: #EEE1DD;
+  border-left: 3px solid #A45F75;
+}
+.humblewood-more-note h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.humblewood-more-note p { color: #35252D; font-size: 0.9375rem; line-height: 1.75; margin: 0; }
+
 @media (max-width: 600px) {
   .project-detail-header { padding: 20px 24px !important; }
   .project-detail-body { padding: 28px 24px 48px !important; }
   .project-process-step { grid-template-columns: 1fr !important; gap: 8px !important; }
   .plant-case-study { gap: 36px; }
   .plant-figure figcaption { padding: 18px; }
-  .plant-figma-note, .unity-more-note { padding: 22px; }
+  .plant-figma-note, .unity-more-note, .humblewood-more-note { padding: 22px; }
   .plant-screen-tabs { gap: 6px; }
   .plant-screen-tabs button { padding: 10px; }
+  .project-actions { align-items: flex-start; }
+  .project-action-links { gap: 12px; }
+  .humblewood-feature-card { padding: 22px; }
 }

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1774 887" role="img" aria-labelledby="title description">
+  <title id="title">Illustrated virtual tabletop cover</title>
+  <desc id="description">A cottagecore tabletop scene with a parchment map, village, player tokens, dice and leafy vines.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#315f50"/>
+      <stop offset="1" stop-color="#24463f"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#f4e8c9"/>
+      <stop offset="1" stop-color="#e8d5ad"/>
+    </linearGradient>
+    <clipPath id="paper-clip"><rect x="250" y="112" width="1080" height="663" rx="48"/></clipPath>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#152d28" flood-opacity=".35"/>
+    </filter>
+  </defs>
+
+  <rect width="1774" height="887" fill="url(#background)"/>
+  <circle cx="142" cy="132" r="205" fill="#7fa071" opacity=".16"/>
+  <circle cx="1640" cy="780" r="260" fill="#a88462" opacity=".15"/>
+
+  <g fill="none" stroke="#9fbd83" stroke-linecap="round">
+    <path d="M-20 165C95 86 191 98 292 20" stroke-width="17"/>
+    <path d="M1794 710c-125 19-204 86-296 177" stroke-width="17"/>
+  </g>
+  <g fill="#9fbd83">
+    <ellipse cx="62" cy="119" rx="54" ry="25" transform="rotate(-27 62 119)"/>
+    <ellipse cx="143" cy="91" rx="56" ry="26" transform="rotate(21 143 91)"/>
+    <ellipse cx="224" cy="54" rx="49" ry="23" transform="rotate(-31 224 54)"/>
+    <ellipse cx="1709" cy="746" rx="55" ry="25" transform="rotate(-28 1709 746)"/>
+    <ellipse cx="1623" cy="792" rx="55" ry="25" transform="rotate(25 1623 792)"/>
+    <ellipse cx="1545" cy="851" rx="50" ry="23" transform="rotate(-34 1545 851)"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="250" y="112" width="1080" height="663" rx="48" fill="url(#paper)"/>
+  </g>
+  <path
+    d="M306 112V775M362 112V775M418 112V775M474 112V775M530 112V775M586 112V775M642 112V775M698 112V775M754 112V775M810 112V775M866 112V775M922 112V775M978 112V775M1034 112V775M1090 112V775M1146 112V775M1202 112V775M1258 112V775M250 168H1330M250 224H1330M250 280H1330M250 336H1330M250 392H1330M250 448H1330M250 504H1330M250 560H1330M250 616H1330M250 672H1330M250 728H1330"
+    fill="none"
+    stroke="#897858"
+    stroke-opacity=".18"
+    stroke-width="2"
+    clip-path="url(#paper-clip)"
+  />
+
+  <path d="M322 622C439 528 464 400 597 369c109-25 153 50 244 9 117-52 136-164 312-192" fill="none" stroke="#6d9d9a" stroke-width="64" stroke-linecap="round" opacity=".78"/>
+  <path d="M315 625C440 523 475 412 597 388c115-22 159 45 250 7 121-50 147-158 308-201" fill="none" stroke="#9fc6bb" stroke-width="16" stroke-linecap="round" opacity=".72"/>
+  <path d="M364 276C477 332 511 466 657 526s270 28 432 129" fill="none" stroke="#b8945f" stroke-width="24" stroke-linecap="round" stroke-dasharray="2 38" opacity=".92"/>
+
+  <g fill="#5d805d" stroke="#365946" stroke-width="8">
+    <circle cx="372" cy="224" r="43"/><circle cx="422" cy="245" r="49"/><circle cx="467" cy="207" r="38"/>
+    <circle cx="1009" cy="580" r="45"/><circle cx="1060" cy="600" r="52"/><circle cx="1105" cy="565" r="39"/>
+  </g>
+  <g fill="#6e4d39">
+    <rect x="384" y="265" width="12" height="44" rx="4"/><rect x="439" y="274" width="12" height="44" rx="4"/>
+    <rect x="1029" y="625" width="12" height="44" rx="4"/><rect x="1080" y="630" width="12" height="44" rx="4"/>
+  </g>
+
+  <g stroke="#634738" stroke-width="8" stroke-linejoin="round">
+    <path d="M765 271l69-59 69 59v86H765z" fill="#f0c46f"/>
+    <path d="M747 272l87-75 87 75" fill="none" stroke="#8f5a49" stroke-width="27"/>
+    <rect x="815" y="300" width="38" height="57" rx="4" fill="#73513f"/>
+    <path d="M927 527l55-48 55 48v70H927z" fill="#dab17a"/>
+    <path d="M912 529l70-61 70 61" fill="none" stroke="#7f4a4e" stroke-width="23"/>
+    <rect x="966" y="551" width="31" height="46" rx="4" fill="#674b3e"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <circle cx="588" cy="544" r="48" fill="#643449" stroke="#f8f4ef" stroke-width="9"/>
+    <circle cx="716" cy="456" r="48" fill="#a45f75" stroke="#f8f4ef" stroke-width="9"/>
+    <circle cx="904" cy="622" r="48" fill="#315f50" stroke="#f8f4ef" stroke-width="9"/>
+    <circle cx="588" cy="544" r="11" fill="#f8f4ef"/><circle cx="716" cy="456" r="11" fill="#f8f4ef"/><circle cx="904" cy="622" r="11" fill="#f8f4ef"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1245" y="206" width="356" height="475" rx="32" fill="#f8f4ef" transform="rotate(3 1245 206)"/>
+    <rect x="1288" y="252" width="265" height="54" rx="17" fill="#643449" transform="rotate(3 1288 252)"/>
+    <rect x="1282" y="333" width="240" height="48" rx="15" fill="#eaded8" transform="rotate(3 1282 333)"/>
+    <rect x="1278" y="405" width="218" height="48" rx="15" fill="#eaded8" transform="rotate(3 1278 405)"/>
+    <rect x="1274" y="477" width="258" height="48" rx="15" fill="#eaded8" transform="rotate(3 1274 477)"/>
+    <circle cx="1324" cy="350" r="13" fill="#a45f75"/>
+    <circle cx="1320" cy="422" r="13" fill="#315f50"/>
+    <circle cx="1316" cy="494" r="13" fill="#b8874e"/>
+  </g>
+
+  <g filter="url(#shadow)" transform="translate(1410 638)">
+    <path d="M0-94L81-48l18 92-72 68-96-20-42-85 48-82z" fill="#b8874e" stroke="#f4e8c9" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M0-94L1 3l98 41M1 3l-70 89M1 3l-112 4M1 3l80-51" fill="none" stroke="#f4e8c9" stroke-width="6" stroke-linejoin="round"/>
+    <circle cx="1" cy="3" r="9" fill="#f4e8c9"/>
+  </g>
+</svg>

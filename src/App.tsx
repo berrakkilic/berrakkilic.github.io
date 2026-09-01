@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import TreePortrait from "./TreePortrait";
 import PlantCareShowcase, { plantCareCover } from "./PlantCareShowcase";
 import UnityShowcase, { unityCover } from "./UnityShowcase";
+import HumblewoodShowcase, { humblewoodCover } from "./HumblewoodShowcase";
 
 // ─── tokens ──────────────────────────────────────────────────────────────────
 const C = {
@@ -21,6 +22,7 @@ type Project = {
   title: string;
   category: string;
   tools: readonly string[];
+  githubUrl: string;
   context?: string;
   cover?: { src: string; alt: string; width: number; height: number; variant?: "artwork" };
   summary: string;
@@ -43,6 +45,7 @@ const projects: Project[] = [
     title: "Plant Care App",
     category: "UI/UX Design · Frontend Development",
     tools: ["Figma", "React", "Python"],
+    githubUrl: "https://github.com/berrakkilic/Leafy-App",
     cover: {
       src: plantCareCover,
       alt: "Leafy plant symbol centered on a light green background.",
@@ -86,6 +89,7 @@ const projects: Project[] = [
     title: "The Bard’s Flute",
     category: "Interaction Design · Unity Development",
     tools: ["Unity", "C#", "ProBuilder"],
+    githubUrl: "https://github.com/berrakkilic/3DUI",
     context: "University group project",
     cover: {
       src: unityCover,
@@ -122,6 +126,51 @@ const projects: Project[] = [
         },
       ],
       showcase: () => <UnityShowcase />,
+      screens: [],
+    },
+  },
+  {
+    id: "humblewood-table",
+    title: "The Humblewood Table",
+    category: "Full-Stack Development · Product Design",
+    tools: ["Node.js", "SQLite", "Docker"],
+    githubUrl: "https://github.com/berrakkilic/humblewood.github.io",
+    context: "Independent full-stack project",
+    cover: {
+      src: humblewoodCover,
+      alt: "Cottagecore illustration of a virtual tabletop with a parchment map, village, player tokens, initiative tracker and dice.",
+      width: 1774,
+      height: 887,
+      variant: "artwork",
+    },
+    summary:
+      "A self-hosted cottagecore virtual tabletop bringing maps, character sheets, dice, initiative and campaign knowledge into one shared space.",
+    contributions: [
+      "Designed the cottagecore interface and information architecture for Dungeon Master and player workflows.",
+      "Built shared maps, tokens, initiative, character sheets, dice rolls, audio and a campaign almanac.",
+      "Implemented role-aware access, server-side ownership checks and persistent deployment with SQLite and Docker.",
+    ],
+    detail: {
+      overview:
+        "The Humblewood Table is a self-hosted virtual tabletop designed for a recurring tabletop campaign. It combines live session tools with character management and a searchable campaign almanac, while keeping Dungeon Master controls separate from player-facing actions.",
+      process: [
+        {
+          phase: "Product design",
+          description:
+            "Organised a broad tabletop workflow into focused spaces for live play, character management and campaign reference. A cottagecore visual system uses parchment, forest tones and rounded shapes to keep the interface playful without obscuring dense information.",
+        },
+        {
+          phase: "Full-stack build",
+          description:
+            "Connected map and token state, character-specific dice rolls, initiative, shared audio and access checks so players and the Dungeon Master can use the same session without sharing private controls.",
+        },
+        {
+          phase: "Deployment",
+          description:
+            "Containerised the application with Docker and persisted SQLite data and uploaded media through mounted storage, creating a self-hosted setup that can be maintained between sessions.",
+        },
+      ],
+      showcase: () => <HumblewoodShowcase />,
       screens: [],
     },
   },
@@ -285,7 +334,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         {/* body */}
         <div className="project-detail-body" style={{ padding: "40px 40px 64px" }}>
           {/* tools */}
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 28 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
             {project.tools.map((t) => (
               <span key={t} style={{
                 fontFamily: "var(--font-sans)",
@@ -315,6 +364,20 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </span>
             )}
           </div>
+
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-repository-link"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.6.1.8-.2.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.2-3.2c-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2a4.7 4.7 0 0 1 1.2 3.2c0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.2c0 .4.2.7.8.6A11.4 11.4 0 0 0 12 .8Z" />
+            </svg>
+            <span>View repository on GitHub</span>
+            <span aria-hidden="true">↗</span>
+            <span className="portfolio-sr-only"> (opens in a new tab)</span>
+          </a>
 
           {/* overview */}
           <p style={{
@@ -983,16 +1046,31 @@ function ProjectCard({
             </svg>
           </button>
 
-          <button
-            type="button"
-            className="project-action project-action--view"
-            onClick={onOpen}
-          >
-            <span>View project</span>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+          <div className="project-action-links">
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-action project-action--github"
+              aria-label={`View ${project.title} repository on GitHub (opens in a new tab)`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.6.1.8-.2.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 0 1 1.2-3.2c-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2a4.7 4.7 0 0 1 1.2 3.2c0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.2c0 .4.2.7.8.6A11.4 11.4 0 0 0 12 .8Z" />
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+            <button
+              type="button"
+              className="project-action project-action--view"
+              onClick={onOpen}
+            >
+              <span>View project</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div
