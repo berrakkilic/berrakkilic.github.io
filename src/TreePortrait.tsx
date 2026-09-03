@@ -1,5 +1,5 @@
 import "./TreePortrait.css";
-import portraitUrl from "./assets/cv-soft.png";
+import portraitUrl from "./assets/cv-soft.webp";
 
 const leaves = [
   { label: "Portfolio", href: "#portfolio", position: "portfolio" },

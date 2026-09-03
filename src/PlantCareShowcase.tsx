@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
-import storyboard from "./assets/plant-care/storyboard.png";
-import myGarden from "./assets/plant-care/my-garden.png";
-import careTasks from "./assets/plant-care/care-tasks.png";
-import identification from "./assets/plant-care/identification.png";
-import identificationFeedback from "./assets/plant-care/identification-feedback.png";
-import encyclopedia from "./assets/plant-care/encyclopedia.png";
+import storyboard from "./assets/plant-care/storyboard.webp";
+import myGarden from "./assets/plant-care/my-garden.webp";
+import careTasks from "./assets/plant-care/care-tasks.webp";
+import identification from "./assets/plant-care/identification.webp";
+import identificationFeedback from "./assets/plant-care/identification-feedback.webp";
+import encyclopedia from "./assets/plant-care/encyclopedia.webp";
 
-export { default as plantCareCover } from "./assets/plant-care/leafy-cover.png";
+export { default as plantCareCover } from "./assets/plant-care/leafy-cover.webp";
 
 const screens = [
   {

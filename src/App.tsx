@@ -774,7 +774,7 @@ function Hero() {
             marginBottom: 40,
             maxWidth: 480,
           }}>
-            Hi! I&apos;m Berrak, an Informatik student at TUM. Through my studies and projects, I'm cultivating a designer&apos;s eye & a developer&apos;s mind.
+            Hi! I&apos;m Berrak, a computer science student at TUM. Through my studies and projects, I'm cultivating a designer&apos;s eye & a developer&apos;s mind.
           </p>
 
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
@@ -1190,7 +1190,7 @@ function About() {
 // ─── CV ───────────────────────────────────────────────────────────────────────
 function CV() {
   const background = [
-    { label: "Education", entries: ["B.Sc. Informatik (in progress) — Technical University of Munich, 7th semester. \n Thesis: Qualitative Evaluation of Interactive Recommender Systems."] },
+    { label: "Education", entries: ["B.Sc. Computer Science (in progress) — Technical University of Munich, 7th semester. \n Thesis: Qualitative Evaluation of Interactive Recommender Systems."] },
     { label: "Software Engineering", entries: ["Embedded C++ development, debugging, and automated testing with GTest and Docker."] },
     { label: "Teaching", entries: ["Teaching assistant for computer architecture and assembly programming. Took initiative to create online learning resources."] },
     { label: "Visual Communication", entries: ["Digital and print design for a student organisation's marketing."] },

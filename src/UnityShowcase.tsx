@@ -1,21 +1,14 @@
 import { useRef, useState } from "react";
-import exploration from "./assets/unity/map.gif";
-import characterInteraction from "./assets/unity/potion.gif";
-import wayfinding from "./assets/unity/breadcrumb.gif";
-import combat from "./assets/unity/fight.gif";
+import explorationVideo from "./assets/unity/map.mp4";
+import explorationPoster from "./assets/unity/exploration.webp";
+import characterInteractionVideo from "./assets/unity/potion.mp4";
+import characterInteractionPoster from "./assets/unity/character-interaction.webp";
+import wayfindingVideo from "./assets/unity/breadcrumb.mp4";
+import wayfindingPoster from "./assets/unity/wayfinding.webp";
+import combatVideo from "./assets/unity/fight.mp4";
+import combatPoster from "./assets/unity/combat.webp";
 
-export { default as unityCover } from "./assets/unity/bards-flute-cover.png";
-
-type HighlightId = "exploration" | "character-interaction" | "wayfinding" | "combat";
-
-// Optional separate playback sources. The current highlight imports already
-// point to the animated GIFs supplied with this project.
-const animations: Record<HighlightId, string | undefined> = {
-  exploration: undefined,
-  "character-interaction": undefined,
-  wayfinding: undefined,
-  combat: undefined,
-};
+export { default as unityCover } from "./assets/unity/bards-flute-cover.webp";
 
 const highlights = [
   {
@@ -24,10 +17,11 @@ const highlights = [
     title: "Exploring the village in first person",
     description:
       "Streets, buildings and an open gazebo make up the space players move through. Interaction, back and hint prompts stay visible while the player explores the environment.",
-    image: exploration,
+    video: explorationVideo,
+    poster: explorationPoster,
     alt: "First-person view down a village street, with a pavilion on the left, buildings on the right and mountains in the distance.",
-    width: 1149,
-    height: 557,
+    width: 1148,
+    height: 556,
   },
   {
     id: "character-interaction",
@@ -35,7 +29,8 @@ const highlights = [
     title: "Bringing characters and objects into the interaction flow",
     description:
       "An NPC encounter takes place at the market table full of potions, illustrating the project's selection and manipulation mechanisms. On-screen prompts expose the available interaction options.",
-    image: characterInteraction,
+    video: characterInteractionVideo,
+    poster: characterInteractionPoster,
     alt: "A red-haired character stands beside a table with coloured potions and wooden barrels; interaction prompts appear in the upper-left corner.",
     width: 1152,
     height: 648,
@@ -46,7 +41,8 @@ const highlights = [
     title: "Making the route part of the world",
     description:
       "Musical-note markers create a breadcrumb trail through the village. The cue connects navigation with the game's musical theme.",
-    image: wayfinding,
+    video: wayfindingVideo,
+    poster: wayfindingPoster,
     alt: "Musical-note markers form a visible trail along the village ground, viewed from the player's first-person perspective.",
     width: 1116,
     height: 612,
@@ -57,7 +53,8 @@ const highlights = [
     title: "Pairing aiming with visible health feedback",
     description:
       "A crossbow encounter combines a central aiming reticle with heart-shaped health indicators above the turtle-like enemy. Shooting and health feedback were among the areas discussed during playtesting.",
-    image: combat,
+    video: combatVideo,
+    poster: combatPoster,
     alt: "A crossbow points towards a spiked turtle-like enemy, with an aiming reticle and five heart-shaped health indicators above it.",
     width: 1116,
     height: 618,
@@ -67,45 +64,71 @@ const highlights = [
 type Highlight = (typeof highlights)[number];
 
 function HighlightMedia({ highlight }: { highlight: Highlight }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [animationFailed, setAnimationFailed] = useState(false);
-  const animation = animations[highlight.id];
-  const showingAnimation = playing && !!animation && !animationFailed;
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  const togglePlayback = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      void video.play().catch(() => setVideoFailed(true));
+    } else {
+      video.pause();
+    }
+  };
 
   return (
     <figure className="unity-highlight">
       <div className="unity-highlight__media">
-        <img
-          key={showingAnimation ? "animation" : "still"}
-          src={showingAnimation ? animation : highlight.image}
-          alt={highlight.alt}
-          width={highlight.width}
-          height={highlight.height}
-          loading="lazy"
-          decoding="async"
-          onError={showingAnimation ? () => { setPlaying(false); setAnimationFailed(true); } : undefined}
-        />
+        {videoFailed ? (
+          <img
+            src={highlight.poster}
+            alt={highlight.alt}
+            width={highlight.width}
+            height={highlight.height}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={highlight.video}
+            poster={highlight.poster}
+            width={highlight.width}
+            height={highlight.height}
+            preload="metadata"
+            muted
+            loop
+            playsInline
+            aria-label={highlight.alt}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+            onError={() => { setPlaying(false); setVideoFailed(true); }}
+          />
+        )}
       </div>
       <figcaption>
         <div className="unity-highlight__actions">
-          <span className="unity-highlight__label">{showingAnimation ? "Animated highlight" : "Project highlight"}</span>
-          {animation && !animationFailed && (
+          <span className="unity-highlight__label">{playing ? "Animated highlight" : "Project highlight"}</span>
+          {!videoFailed && (
             <button
               type="button"
               className="unity-playback-button"
               aria-pressed={playing}
               aria-label={`${playing ? "Stop" : "Play"} ${highlight.label.toLowerCase()} animation`}
-              onClick={() => setPlaying(!playing)}
+              onClick={togglePlayback}
             >
               <span aria-hidden="true">{playing ? "■" : "▶"}</span>
               {playing ? "Stop animation" : "Play animation"}
             </button>
           )}
         </div>
-        {animationFailed && <p role="status">The animation could not load. The project still is shown instead.</p>}
+        {videoFailed && <p role="status">The animation could not load. The project still is shown instead.</p>}
         <h4>{highlight.title}</h4>
         <p>{highlight.description}</p>
-        <a href={highlight.image} target="_blank" rel="noopener noreferrer">
+        <a href={highlight.poster} target="_blank" rel="noopener noreferrer">
           Open full-size still <span aria-hidden="true">↗</span>
           <span className="portfolio-sr-only"> (opens in a new tab)</span>
         </a>
@@ -171,7 +194,7 @@ export default function UnityShowcase() {
           tabIndex={0}
           hidden={activeHighlight !== index}
         >
-          {/* Unmount inactive media, so changing tabs stops any playing GIF. */}
+          {/* Unmount inactive media, so changing tabs stops any playing video. */}
           {activeHighlight === index && <HighlightMedia key={highlight.id} highlight={highlight} />}
         </div>
       ))}

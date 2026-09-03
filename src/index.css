@@ -21,6 +21,17 @@ body,
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+#portfolio,
+#about,
+#cv {
+  scroll-margin-top: 88px;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -33,6 +44,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *, *::before, *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
@@ -121,7 +136,7 @@ body {
 .unity-case-study :focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
 .unity-highlight { margin: 0; border: 1px solid #DDD2CC; }
 .unity-highlight__media { background: #1d2634; aspect-ratio: 16 / 9; display: flex; align-items: center; }
-.unity-highlight img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.unity-highlight img, .unity-highlight video { display: block; width: 100%; height: 100%; object-fit: contain; }
 .unity-highlight figcaption { padding: 20px 24px 24px; background: #F8F4EF; border-top: 1px solid #DDD2CC; }
 .unity-highlight__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin: 0 0 14px; }
 .unity-highlight__label { margin: 0; }
