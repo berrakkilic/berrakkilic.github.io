@@ -138,7 +138,7 @@ const projects: Project[] = [
     context: "Independent full-stack project",
     cover: {
       src: humblewoodCover,
-      alt: "Cottagecore illustration of a virtual tabletop with a parchment map, village, player tokens, initiative tracker and dice.",
+      alt: "Three clean low-poly tabletop dice in forest green, warm cream and dusty pink on a softly lit ivory background.",
       width: 1774,
       height: 887,
       variant: "artwork",
