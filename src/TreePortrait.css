@@ -143,12 +143,6 @@
   object-fit: cover;
 }
 
-#portfolio,
-#about,
-#cv {
-  scroll-margin-top: 80px;
-}
-
 @media (min-width: 1024px) {
   .header-navigation:not(.header-navigation--visible) {
     visibility: hidden;

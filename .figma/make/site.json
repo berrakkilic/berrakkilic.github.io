@@ -1,8 +1,8 @@
 {
   "title": "Berrak Kilic • Portfolio",
-  "description": "Showcases my UI/UX and frontend developer portfolio with project highlights, background and skills :)",
+  "description": "UI/UX and frontend development portfolio of Berrak Kilic, featuring selected projects, design process, technical work and skills.",
   "robots": {
-    "index": false
+    "index": true
   },
   "accessibility": {
     "addBypassLinks": false,

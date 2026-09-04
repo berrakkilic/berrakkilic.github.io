@@ -1,18 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap');
 @import 'tailwindcss';
 
 @theme {
   --color-ivory: #F8F4EF;
   --color-plum: #643449;
   --color-plum-dark: #4e2839;
-  --color-rose: #A45F75;
+  --color-rose: #8F4D64;
   --color-ink: #35252D;
   --color-blush: #EEE1DD;
   --color-border: #DDD2CC;
-  --color-muted: #8a6e76;
+  --color-muted: #775A64;
 
-  --font-serif: 'Lora', Georgia, serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Lora', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --font-sans: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 html,
@@ -23,7 +22,6 @@ body,
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: -20px;
 }
 
 * {
@@ -66,13 +64,13 @@ body {
   white-space: nowrap;
   transition: color 0.2s;
 }
-.project-action--contributions { color: #8a6e76; }
+.project-action--contributions { color: #775A64; }
 .project-action--contributions:hover { color: #35252D; }
 .project-action-links { display: flex; align-items: center; gap: 16px; margin-left: auto; flex-wrap: wrap; }
-.project-action--github { color: #8a6e76; text-decoration: none; }
+.project-action--github { color: #775A64; text-decoration: none; }
 .project-action--github:hover { color: #35252D; }
 .project-action--view { color: #643449; }
-.project-action--view:hover { color: #A45F75; }
+.project-action--view:hover { color: #8F4D64; }
 .project-repository-link {
   display: inline-flex;
   align-items: center;
@@ -84,13 +82,14 @@ body {
   text-decoration: none;
   text-underline-offset: 4px;
 }
-.project-repository-link:hover { color: #A45F75; text-decoration: underline; }
+.project-repository-link:hover { color: #8F4D64; text-decoration: underline; }
 .project-repository-link:focus-visible,
-.project-action--github:focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
+.project-action--github:focus-visible { outline: 2px solid #8F4D64; outline-offset: 4px; }
 
 .project-cover-image { display: block; width: 100%; height: 100%; object-fit: contain; }
 .project-cover-image--artwork { object-fit: cover; object-position: center; padding: 0; }
-.project-cover-button:focus-visible { outline: 3px solid #A45F75 !important; outline-offset: -3px; }
+.project-cover-button:focus-visible { outline: 3px solid #8F4D64 !important; outline-offset: -3px; }
+.project-showcase-loading { margin: 0; padding: 32px 0; color: #775A64; }
 
 /* Unity highlights: keep media uncropped and only mount the selected item. */
 .unity-case-study { min-width: 0; }
@@ -108,10 +107,10 @@ body {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #A45F75;
+  color: #8F4D64;
   margin: 0 0 10px;
 }
-.unity-case-study__intro { font-size: 0.9375rem; line-height: 1.7; color: #8a6e76; margin: 0 0 24px; }
+.unity-case-study__intro { font-size: 0.9375rem; line-height: 1.7; color: #775A64; margin: 0 0 24px; }
 .unity-screen-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .unity-screen-tabs button, .unity-playback-button {
   border: 1px solid #DDD2CC;
@@ -127,7 +126,7 @@ body {
 .unity-screen-tabs button:hover, .unity-playback-button:hover { background: #EEE1DD; }
 .unity-screen-tabs button[aria-selected="true"] { background: #643449; border-color: #643449; color: #fff; }
 .unity-highlight-panel[hidden] { display: none; }
-.unity-case-study :focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
+.unity-case-study :focus-visible { outline: 2px solid #8F4D64; outline-offset: 4px; }
 .unity-highlight { margin: 0; border: 1px solid #DDD2CC; }
 .unity-highlight__media { background: #1d2634; aspect-ratio: 16 / 9; display: flex; align-items: center; }
 .unity-highlight img, .unity-highlight video { display: block; width: 100%; height: 100%; object-fit: contain; }
@@ -136,7 +135,7 @@ body {
 .unity-highlight__label { margin: 0; }
 .unity-playback-button { display: inline-flex; align-items: center; gap: 8px; }
 .unity-highlight h4 { font-size: 1rem; line-height: 1.5; font-weight: 600; color: #35252D; margin: 0 0 8px; }
-.unity-highlight p { color: #8a6e76; font-size: 0.875rem; line-height: 1.7; margin: 0 0 12px; }
+.unity-highlight p { color: #775A64; font-size: 0.875rem; line-height: 1.7; margin: 0 0 12px; }
 .unity-highlight a { color: #643449; font-size: 0.8125rem; font-weight: 500; text-underline-offset: 4px; }
 .unity-highlight a:hover { text-decoration: underline; }
 
@@ -163,13 +162,13 @@ body {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #A45F75;
+  color: #8F4D64;
   margin: 0 0 10px;
 }
 .plant-case-study__intro {
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: #8a6e76;
+  color: #775A64;
   margin: 0 0 24px;
 }
 .plant-figure { margin: 0; border: 1px solid #DDD2CC; background: #fff; }
@@ -177,7 +176,7 @@ body {
 .plant-figure img { display: block; width: 100%; height: auto; }
 .plant-figure figcaption { padding: 20px 24px 24px; background: #F8F4EF; border-top: 1px solid #DDD2CC; }
 .plant-figure h4 { font-size: 1rem; line-height: 1.5; font-weight: 600; color: #35252D; margin: 0 0 8px; }
-.plant-figure p { color: #8a6e76; font-size: 0.875rem; line-height: 1.7; margin: 0 0 12px; }
+.plant-figure p { color: #775A64; font-size: 0.875rem; line-height: 1.7; margin: 0 0 12px; }
 .plant-figure figcaption a { color: #643449; font-size: 0.8125rem; font-weight: 500; text-underline-offset: 4px; }
 .plant-figure figcaption a:hover { text-decoration: underline; }
 .plant-screen-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
@@ -195,8 +194,8 @@ body {
 .plant-screen-tabs button:hover { background: #EEE1DD; }
 .plant-screen-tabs button[aria-selected="true"] { background: #643449; border-color: #643449; color: #fff; }
 .plant-screen-panel[hidden] { display: none; }
-.plant-screen-panel:focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
-.plant-figma-note, .unity-more-note { padding: 28px; background: #EEE1DD; border-left: 3px solid #A45F75; }
+.plant-screen-panel:focus-visible { outline: 2px solid #8F4D64; outline-offset: 4px; }
+.plant-figma-note, .unity-more-note { padding: 28px; background: #EEE1DD; border-left: 3px solid #8F4D64; }
 .plant-figma-note h3, .unity-more-note h3 { font-size: 1.25rem; margin-bottom: 10px; }
 .plant-figma-note p, .unity-more-note p { color: #35252D; font-size: 0.9375rem; line-height: 1.75; margin: 0; }
 .unity-more-note { margin-top: 32px; }
@@ -221,14 +220,14 @@ body {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #A45F75;
+  color: #8F4D64;
   margin: 0 0 10px;
 }
 .humblewood-case-study__intro {
   max-width: 640px;
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: #8a6e76;
+  color: #775A64;
   margin: 0 0 28px;
 }
 .humblewood-feature-grid { display: grid; gap: 16px; }
@@ -261,7 +260,7 @@ body {
 }
 .humblewood-feature-card > p:not(.humblewood-feature-card__eyebrow) {
   position: relative;
-  color: #8a6e76;
+  color: #775A64;
   font-size: 0.875rem;
   line-height: 1.7;
   margin: 0 0 18px;
@@ -300,7 +299,7 @@ body {
 .humblewood-screen-tabs button[aria-selected="true"] { background: #643449; border-color: #643449; color: #fff; }
 .humblewood-screen-panel[hidden] { display: none; }
 .humblewood-screen-panel:focus-visible,
-.humblewood-interface-figure__image-link:focus-visible { outline: 2px solid #A45F75; outline-offset: 4px; }
+.humblewood-interface-figure__image-link:focus-visible { outline: 2px solid #8F4D64; outline-offset: 4px; }
 .humblewood-interface-figure { margin: 0; border: 1px solid #DDD2CC; background: #fff; }
 .humblewood-interface-figure__image-link { display: block; background: #EEE1DD; }
 .humblewood-interface-figure img { display: block; width: 100%; height: auto; }
@@ -313,7 +312,7 @@ body {
   margin: 0 0 8px;
 }
 .humblewood-interface-figure figcaption > p:not(.humblewood-feature-card__eyebrow) {
-  color: #8a6e76;
+  color: #775A64;
   font-size: 0.875rem;
   line-height: 1.7;
   margin: 0 0 12px;
@@ -327,7 +326,7 @@ body {
 .humblewood-interface-figure figcaption a:hover { text-decoration: underline; }
 .humblewood-interface-figure .humblewood-asset-note {
   padding: 10px 12px;
-  border-left: 2px solid #A45F75;
+  border-left: 2px solid #8F4D64;
   background: #EEE1DD;
   color: #35252D;
   font-size: 0.75rem;
@@ -336,7 +335,7 @@ body {
   margin-top: 32px;
   padding: 28px;
   background: #EEE1DD;
-  border-left: 3px solid #A45F75;
+  border-left: 3px solid #8F4D64;
 }
 .humblewood-more-note h3 { font-size: 1.25rem; margin-bottom: 10px; }
 .humblewood-more-note p { color: #35252D; font-size: 0.9375rem; line-height: 1.75; margin: 0; }

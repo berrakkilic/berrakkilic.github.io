@@ -1,19 +1,26 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useCallback, useRef } from "react";
 import TreePortrait from "./TreePortrait";
-import PlantCareShowcase, { plantCareCover } from "./PlantCareShowcase";
-import UnityShowcase, { unityCover } from "./UnityShowcase";
-import HumblewoodShowcase, { humblewoodCover } from "./HumblewoodShowcase";
+import plantCareCover from "./assets/plant-care/leafy-cover.webp";
+import plantCareCoverSmall from "./assets/plant-care/leafy-cover-900.webp";
+import unityCover from "./assets/unity/bards-flute-cover.webp";
+import unityCoverSmall from "./assets/unity/bards-flute-cover-900.webp";
+import humblewoodCover from "./assets/humblewood-cover-v4.webp";
+import humblewoodCoverSmall from "./assets/humblewood-cover-v4-900.webp";
+
+const PlantCareShowcase = lazy(() => import("./PlantCareShowcase"));
+const UnityShowcase = lazy(() => import("./UnityShowcase"));
+const HumblewoodShowcase = lazy(() => import("./HumblewoodShowcase"));
 
 // ─── tokens ──────────────────────────────────────────────────────────────────
 const C = {
   ivory: "#F8F4EF",
   plum: "#643449",
   plumDark: "#4e2839",
-  rose: "#A45F75",
+  rose: "#8F4D64",
   ink: "#35252D",
   blush: "#EEE1DD",
   border: "#DDD2CC",
-  muted: "#8a6e76",
+  muted: "#775A64",
 } as const;
 
 // ─── project data ─────────────────────────────────────────────────────────────
@@ -24,7 +31,15 @@ type Project = {
   tools: readonly string[];
   githubUrl: string;
   context?: string;
-  cover?: { src: string; alt: string; width: number; height: number; variant?: "artwork" };
+  cover?: {
+    src: string;
+    srcSet?: string;
+    sizes?: string;
+    alt: string;
+    width: number;
+    height: number;
+    variant?: "artwork";
+  };
   summary: string;
   contributions: readonly string[];
   detail: {
@@ -39,6 +54,14 @@ type Project = {
   };
 };
 
+function ProjectShowcaseLoading() {
+  return (
+    <p className="project-showcase-loading" role="status">
+      Loading project highlights…
+    </p>
+  );
+}
+
 const projects: Project[] = [
   {
     id: "plant-care",
@@ -48,6 +71,8 @@ const projects: Project[] = [
     githubUrl: "https://github.com/berrakkilic/Leafy-App",
     cover: {
       src: plantCareCover,
+      srcSet: `${plantCareCoverSmall} 900w, ${plantCareCover} 1774w`,
+      sizes: "(max-width: 768px) calc(100vw - 48px), min(50vw, 786px)",
       alt: "Leafy plant symbol centered on a light green background.",
       width: 1774,
       height: 887,
@@ -80,7 +105,11 @@ const projects: Project[] = [
             "Ran structured usability experiments with participants. Collected interaction data and analysed results with Python to identify friction points and inform the next design iteration.",
         },
       ],
-      showcase: () => <PlantCareShowcase />,
+      showcase: () => (
+        <Suspense fallback={<ProjectShowcaseLoading />}>
+          <PlantCareShowcase />
+        </Suspense>
+      ),
       screens: [],
     },
   },
@@ -93,6 +122,8 @@ const projects: Project[] = [
     context: "University group project",
     cover: {
       src: unityCover,
+      srcSet: `${unityCoverSmall} 900w, ${unityCover} 1774w`,
+      sizes: "(max-width: 768px) calc(100vw - 48px), min(50vw, 786px)",
       alt: "Illustrated cover for The Bard’s Flute: a low-poly golden flute and musical notes on a lavender background.",
       width: 1774,
       height: 887,
@@ -125,7 +156,11 @@ const projects: Project[] = [
             "Playtesting reviewed gameplay feedback, navigation, input behaviour and the story. The presentation records critiques of health indicators, shooting, breadcrumb movement, beacon range and dance-mat behaviour on Windows, alongside suggestions for the marketplace and NPC conversations.",
         },
       ],
-      showcase: () => <UnityShowcase />,
+      showcase: () => (
+        <Suspense fallback={<ProjectShowcaseLoading />}>
+          <UnityShowcase />
+        </Suspense>
+      ),
       screens: [],
     },
   },
@@ -138,6 +173,8 @@ const projects: Project[] = [
     context: "Independent full-stack project",
     cover: {
       src: humblewoodCover,
+      srcSet: `${humblewoodCoverSmall} 900w, ${humblewoodCover} 1774w`,
+      sizes: "(max-width: 768px) calc(100vw - 48px), min(50vw, 786px)",
       alt: "Three clean low-poly tabletop dice in forest green, warm cream and dusty pink on a softly lit ivory background.",
       width: 1774,
       height: 887,
@@ -170,7 +207,11 @@ const projects: Project[] = [
             "Containerised the application with Docker and persisted SQLite data and uploaded media through mounted storage, creating a self-hosted setup that can be maintained between sessions.",
         },
       ],
-      showcase: () => <HumblewoodShowcase />,
+      showcase: () => (
+        <Suspense fallback={<ProjectShowcaseLoading />}>
+          <HumblewoodShowcase />
+        </Suspense>
+      ),
       screens: [],
     },
   },
@@ -885,6 +926,8 @@ function ProjectCard({
           {project.cover ? (
             <img
               src={project.cover.src}
+              srcSet={project.cover.srcSet}
+              sizes={project.cover.sizes}
               alt={project.cover.alt}
               width={project.cover.width}
               height={project.cover.height}
@@ -1314,7 +1357,7 @@ const responsiveCSS = `
   }
 
   a:focus-visible, button:focus-visible {
-    outline: 2px solid #A45F75;
+    outline: 2px solid #8F4D64;
     outline-offset: 3px;
   }
 

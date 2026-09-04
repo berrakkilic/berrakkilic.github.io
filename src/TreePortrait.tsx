@@ -1,5 +1,7 @@
 import "./TreePortrait.css";
 import portraitUrl from "./assets/cv-soft.webp";
+import portraitSmallUrl from "./assets/cv-soft-560.webp";
+import portraitMediumUrl from "./assets/cv-soft-960.webp";
 
 const leaves = [
   { label: "Portfolio", href: "#portfolio", position: "portfolio" },
@@ -59,11 +61,12 @@ export default function TreePortrait({ colour }: { colour: string }) {
         <figure className="portrait-swing__frame">
           <img
             src={portraitUrl}
+            srcSet={`${portraitSmallUrl} 560w, ${portraitMediumUrl} 960w, ${portraitUrl} 1254w`}
+            sizes="(max-width: 1023px) min(82vw, 280px), min(44vw, 516px)"
             alt="Portrait of Berrak Kilic"
             width="1254"
             height="1254"
             decoding="async"
-            fetchPriority="high"
           />
         </figure>
       </div>
